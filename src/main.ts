@@ -12,26 +12,27 @@ import { renderEvents, renderHours, renderWalks } from './ui/lists';
 import { initMap } from './ui/map';
 import { initMenus } from './ui/menus';
 import { initNav } from './ui/nav';
+import { initSign } from './ui/sign';
 import { initStory } from './ui/story';
 
 document.documentElement.classList.add('js');
 
-// Render data-driven content first so the motion passes can see it.
+// Render data-driven content and mount the mechanisms first so the motion
+// passes can see everything.
 renderEvents();
 renderWalks();
 renderHours();
 initMenus();
 initMap();
+initStory();
 
-// Motion passes.
 initReveals();
 initParallax();
 initHover();
 
-// Behaviour.
 initNav();
 initHero();
-initStory();
+initSign();
 initBooking();
 
 measure();

@@ -1,63 +1,57 @@
 /* ------------------------------------------------------------------
-   The Prince of Wales, Iffley — design tokens
-   A hearth palette: bottle green ground, flour-cream paper, ember
-   amber light, aged brass detail. Dark-first; cream sections are the
-   "printed card" interludes.
+   The Prince of Wales, Iffley — tokens
+
+   Bottle-green painted boards, gold-leaf signwriting, cream paper for
+   reading. Oxford's Fell types for headings, Caslon for text, a Victorian
+   Tuscan (Sancreek) for signwriting only.
    ------------------------------------------------------------------ */
 :root {
-  /* greens */
-  --ink: #0c1912; /* deepest ground — hero, footer */
-  --ink-2: #12241b; /* events / evening */
-  --moss: #1c392c; /* bottle green */
-  --fern: #33594a; /* mid green, borders on dark */
-  --sage: #8fa590; /* soft daylight green */
-  --sage-light: #e6ebdd; /* garden ground */
+  /* paint */
+  --green: #0f2a1e; /* the painted board */
+  --green-deep: #08150f; /* gaslight, the 1880s */
+  --green-2: #163628; /* raised panel */
+  --green-3: #244b39; /* mid */
+  --moss: #1b3a2c;
 
-  /* creams */
-  --flour: #faf5ea; /* bakery ground */
-  --cream: #f3e9d5;
-  --parchment: #e8dbbd; /* menu card */
-  --parchment-deep: #d9c9a3;
+  /* paper */
+  --cream: #f1e7cf;
+  --cream-2: #e7dbbc; /* paper in shadow / rules */
+  --flour: #f8f2e3; /* the bakery */
+  --river: #e2e7da; /* today, by the water */
 
-  /* light */
-  --amber: #d8963a;
-  --amber-bright: #f2b45c;
-  --ember: #a8472a;
-  --brass: #b28f4e;
-  --brass-dim: #7c6236;
-  --brass-on-dark: #c9a462;
+  /* gold leaf */
+  --gold: #c9a24a;
+  --gold-hi: #ecca70;
+  --gold-lo: #8a6a2a;
 
-  /* text */
-  --on-dark: var(--cream);
-  --on-dark-muted: rgba(243, 233, 213, 0.72);
-  --on-light: var(--ink);
-  --on-light-muted: rgba(12, 25, 18, 0.7);
+  /* ink & accents */
+  --ink: #17140f;
+  --ink-2: rgba(23, 20, 15, 0.7);
+  --ink-3: rgba(23, 20, 15, 0.45);
+  --ochre: #9c3b25; /* the stamp, the ribbon */
+  --plume: #efe6d3;
+  --amber: #f2b45c;
+  --water: #8fb0ae;
+
+  /* text on paint */
+  --on-paint: var(--cream);
+  --on-paint-2: rgba(241, 231, 207, 0.72);
 
   /* type */
-  --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
-  --font-body: 'Instrument Sans', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-head: 'IM Fell English', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-sc: 'IM Fell English SC', 'IM Fell English', Georgia, serif;
+  --font-body: 'Libre Caslon Text', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-sign: 'Sancreek', 'IM Fell English', Georgia, serif;
 
-  --fs-display: clamp(3.2rem, 14vw, 7.5rem);
-  --fs-h2: clamp(2.1rem, 7.5vw, 4.2rem);
-  --fs-h3: clamp(1.6rem, 6vw, 2.6rem);
-  --fs-h4: 1.25rem;
   --fs-body: 1.0625rem;
   --fs-small: 0.9375rem;
-  --fs-eyebrow: 0.72rem;
 
   /* layout */
-  --gutter: clamp(1.25rem, 5vw, 3.5rem);
-  --container: 72rem;
-  --measure: 36rem;
-  --nav-h: 66px;
-  --section-pad: clamp(4.5rem, 12vw, 9rem);
-
-  --radius-sm: 8px;
-  --radius: 16px;
-  --radius-lg: 24px;
-
-  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 20px 50px -24px rgba(0, 0, 0, 0.55);
-  --shadow-lift: 0 30px 60px -28px rgba(0, 0, 0, 0.6);
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+  --container: 68rem;
+  --measure: 34rem;
+  --nav-h: 58px;
+  --section-pad: clamp(4rem, 11vw, 8rem);
 
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-top: env(safe-area-inset-top, 0px);

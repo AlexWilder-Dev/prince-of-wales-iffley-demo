@@ -1,6 +1,7 @@
 /**
- * Navigation: solid-on-scroll bar, brand shrink, active-section indicator,
- * spring-driven anchor scrolling and the full-screen mobile menu.
+ * The fascia: paint appears once you scroll, the name shrinks a touch, an
+ * underline follows the active section (desktop), anchors scroll on springs,
+ * and the full-screen menu opens with staggered springs.
  */
 import { Spring, SpringVector, presets, clamp01 } from '../motion/spring';
 import { onScroll, scrollToElement, track, viewport } from '../motion/scroll';
@@ -10,33 +11,29 @@ export function initNav(): void {
   const menu = document.getElementById('menu');
   if (!nav || !menu) return;
 
-  const bg = nav.querySelector<HTMLElement>('.nav__bg');
-  const brand = nav.querySelector<HTMLElement>('.nav__brand');
+  const bg = nav.querySelector<HTMLElement>('.fascia__bg');
+  const name = nav.querySelector<HTMLElement>('.fascia__name');
   const links = Array.from(nav.querySelectorAll<HTMLAnchorElement>('[data-nav]'));
-  const indicator = nav.querySelector<HTMLElement>('.nav__indicator');
-  const burger = nav.querySelector<HTMLButtonElement>('.nav__burger');
-  const lines = burger ? Array.from(burger.querySelectorAll<HTMLElement>('.nav__burger-line')) : [];
+  const indicator = nav.querySelector<HTMLElement>('.fascia__indicator');
+  const toggle = nav.querySelector<HTMLButtonElement>('[data-menu-toggle]');
   const scrim = menu.querySelector<HTMLElement>('.menu__scrim');
   const menuLinks = Array.from(menu.querySelectorAll<HTMLAnchorElement>('[data-menu-link]'));
   const menuFoot = menu.querySelector<HTMLElement>('.menu__foot');
 
-  /* ---- solid background + brand shrink ---- */
   let solid = false;
   let menuOpen = false;
 
   const bgSpring = new Spring(0, presets.gentle, (v) => {
     if (bg) bg.style.opacity = clamp01(v).toFixed(3);
   });
-  const brandSpring = new Spring(1, presets.snappy, (v) => {
-    if (brand) brand.style.transform = `scale(${v.toFixed(4)})`;
+  const nameSpring = new Spring(1, presets.snappy, (v) => {
+    if (name) name.style.transform = `scale(${v.toFixed(4)})`;
   });
-
   const syncBar = (): void => {
     bgSpring.set(solid || menuOpen ? 1 : 0);
-    brandSpring.set(solid ? 0.9 : 1);
+    nameSpring.set(solid ? 0.92 : 1);
   };
 
-  /* ---- active section indicator ---- */
   const sections = links
     .map((a) => {
       const id = a.getAttribute('href')?.slice(1) ?? '';
@@ -82,30 +79,24 @@ export function initNav(): void {
     setActive(idx);
   });
 
-  /* ---- mobile menu ---- */
+  /* ---- menu ---- */
   const scrimSpring = new Spring(0, presets.gentle, (v) => {
     if (scrim) scrim.style.opacity = clamp01(v).toFixed(3);
   });
   scrimSpring.onRest(() => {
     if (!menuOpen && scrimSpring.value === 0) menu.hidden = true;
   });
-
   const linkSprings = menuLinks.map(
     (a) =>
       new Spring(0, presets.gentle, (v) => {
         a.style.opacity = clamp01(v).toFixed(3);
-        a.style.transform = `translate3d(0, ${((1 - v) * 28).toFixed(2)}px, 0)`;
+        a.style.transform = `translate3d(0, ${((1 - v) * 26).toFixed(2)}px, 0)`;
       }),
   );
   const footSpring = new Spring(0, presets.gentle, (v) => {
     if (!menuFoot) return;
     menuFoot.style.opacity = clamp01(v).toFixed(3);
     menuFoot.style.transform = `translate3d(0, ${((1 - v) * 20).toFixed(2)}px, 0)`;
-  });
-  const burgerSpring = new Spring(0, presets.snappy, (v) => {
-    const [l0, l1] = lines;
-    if (l0) l0.style.transform = `translate3d(0, ${(3.5 * v).toFixed(2)}px, 0) rotate(${(45 * v).toFixed(2)}deg)`;
-    if (l1) l1.style.transform = `translate3d(0, ${(-3.5 * v).toFixed(2)}px, 0) rotate(${(-45 * v).toFixed(2)}deg)`;
   });
 
   let timers: number[] = [];
@@ -120,10 +111,11 @@ export function initNav(): void {
     clearTimers();
     menu.hidden = false;
     document.body.classList.add('is-locked');
-    burger?.setAttribute('aria-expanded', 'true');
-    burger?.setAttribute('aria-label', 'Close menu');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.textContent = 'Close';
+    }
     scrimSpring.set(1);
-    burgerSpring.set(1);
     syncBar();
     linkSprings.forEach((s, i) => timers.push(window.setTimeout(() => s.set(1), 70 + i * 55)));
     timers.push(window.setTimeout(() => footSpring.set(1), 70 + linkSprings.length * 55));
@@ -135,17 +127,18 @@ export function initNav(): void {
     menuOpen = false;
     clearTimers();
     document.body.classList.remove('is-locked');
-    burger?.setAttribute('aria-expanded', 'false');
-    burger?.setAttribute('aria-label', 'Open menu');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = 'Menu';
+    }
     scrimSpring.set(0);
-    burgerSpring.set(0);
     syncBar();
     linkSprings.forEach((s) => s.set(0));
     footSpring.set(0);
-    if (restoreFocus) burger?.focus({ preventScroll: true });
+    if (restoreFocus) toggle?.focus({ preventScroll: true });
   };
 
-  burger?.addEventListener('click', () => (menuOpen ? closeMenu() : openMenu()));
+  toggle?.addEventListener('click', () => (menuOpen ? closeMenu() : openMenu()));
   scrim?.addEventListener('click', () => closeMenu());
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menuOpen) closeMenu();
@@ -156,7 +149,7 @@ export function initNav(): void {
     if (hit && indicator) ind.snap([hit.a.offsetLeft, hit.a.offsetWidth]);
   });
 
-  /* ---- spring-driven anchor scrolling ---- */
+  /* ---- anchors on springs ---- */
   document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]:not(.skip)').forEach((a) => {
     a.addEventListener('click', (e) => {
       const id = a.getAttribute('href')?.slice(1);
@@ -165,8 +158,7 @@ export function initNav(): void {
       if (!target) return;
       e.preventDefault();
       if (menuOpen) closeMenu(false);
-      const offset = id === 'top' ? 0 : nav.offsetHeight - 1;
-      scrollToElement(target, offset);
+      scrollToElement(target, id === 'top' ? 0 : nav.offsetHeight - 1);
       history.replaceState(null, '', `#${id}`);
       if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
       target.focus({ preventScroll: true });

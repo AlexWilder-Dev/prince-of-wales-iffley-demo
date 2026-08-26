@@ -1,10 +1,10 @@
 /**
- * "Book a table" — a bottom sheet on phones, a centred card on desktop.
- * Purely visual: nothing is sent anywhere. Invalid fields get a physical
- * shake (an impulse on an underdamped spring), and success draws a tick.
+ * "Book a table" — a reservation slip: a bottom sheet on phones, a card on
+ * desktop. Purely visual; nothing is sent. Invalid fields get a physical
+ * shake; success slams a RECEIVED stamp onto the slip.
  */
 import { initHover } from '../motion/hover';
-import { Spring, presets, clamp, clamp01 } from '../motion/spring';
+import { Spring, SpringVector, presets, clamp, clamp01 } from '../motion/spring';
 
 const TIME_GROUPS = [
   { label: 'Lunch', slots: ['12:00', '12:30', '13:00', '13:30', '14:00', '14:30'] },
@@ -14,17 +14,13 @@ const TIME_GROUPS = [
 const isDesktop = (): boolean => window.matchMedia('(min-width: 640px)').matches;
 
 function isoLocal(d: Date): string {
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${y}-${m}-${day}`;
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
 
 function prettyDate(iso: string): string {
   const [y, m, d] = iso.split('-').map(Number);
   if (!y || !m || !d) return iso;
-  const date = new Date(y, m - 1, d);
-  return date.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+  return new Date(y, m - 1, d).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
 }
 
 function prettyTime(t: string): string {
@@ -51,18 +47,15 @@ export function initBooking(): void {
   const times = form.querySelector<HTMLElement>('[data-times]');
   const partyOut = form.querySelector<HTMLOutputElement>('[data-party]');
   const summary = done.querySelector<HTMLElement>('[data-summary]');
-  const ring = done.querySelector<SVGElement>('.booking__check-ring');
-  const tick = done.querySelector<SVGElement>('.booking__check-tick');
+  const stamp = done.querySelector<HTMLElement>('[data-stamp]');
   if (!dateField || !timeField || !dateInput || !times || !partyOut) return;
 
-  /* ---- field errors ---- */
-  const addError = (field: HTMLElement, text: string): HTMLElement => {
+  const addError = (field: HTMLElement, text: string): void => {
     const el = document.createElement('span');
     el.className = 'field__error';
     el.textContent = text;
     el.setAttribute('role', 'alert');
     field.append(el);
-    return el;
   };
   addError(dateField, 'Pick a date to get started.');
   addError(timeField, 'Choose a time — lunch or dinner.');
@@ -82,7 +75,6 @@ export function initBooking(): void {
   };
   const clearError = (field: HTMLElement): void => field.classList.remove('is-invalid');
 
-  /* ---- date ---- */
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
@@ -90,14 +82,11 @@ export function initBooking(): void {
   dateInput.value = isoLocal(tomorrow);
   dateInput.addEventListener('input', () => clearError(dateField));
 
-  /* ---- time chips ---- */
   let time: string | null = null;
   times.innerHTML = TIME_GROUPS.map(
     (g) =>
       `<span class="chips__group">${g.label}</span>` +
-      g.slots
-        .map((s) => `<button class="chip" type="button" aria-pressed="false" data-time="${s}" data-hover="button">${s}</button>`)
-        .join(''),
+      g.slots.map((s) => `<button class="chip" type="button" aria-pressed="false" data-time="${s}" data-hover="button">${s}</button>`).join(''),
   ).join('');
   times.addEventListener('click', (e) => {
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-time]');
@@ -107,7 +96,6 @@ export function initBooking(): void {
     clearError(timeField);
   });
 
-  /* ---- party stepper ---- */
   let party = 2;
   const stepBtns = Array.from(form.querySelectorAll<HTMLButtonElement>('[data-step]'));
   const pop = new Spring(1, presets.snappy, (v) => {
@@ -132,7 +120,6 @@ export function initBooking(): void {
   );
   syncStepper();
 
-  /* ---- open / close ---- */
   let open = false;
   let opener: HTMLElement | null = null;
 
@@ -155,6 +142,12 @@ export function initBooking(): void {
     }
   });
 
+  const stampSpring = new SpringVector([1.8, 0], { stiffness: 520, damping: 22, mass: 1 }, ([s = 1, o = 0]) => {
+    if (!stamp) return;
+    stamp.style.transform = `rotate(-12deg) scale(${s.toFixed(3)})`;
+    stamp.style.opacity = clamp01(o).toFixed(3);
+  });
+
   const showForm = (): void => {
     form.hidden = false;
     done.hidden = true;
@@ -170,8 +163,7 @@ export function initBooking(): void {
     clearError(dateField);
     clearError(timeField);
     dateInput.value = isoLocal(tomorrow);
-    if (ring) ring.style.strokeDashoffset = '214';
-    if (tick) tick.style.strokeDashoffset = '50';
+    stampSpring.snap([1.8, 0]);
     showForm();
   };
 
@@ -221,19 +213,6 @@ export function initBooking(): void {
     }
   });
 
-  /* ---- submit → confirmation ---- */
-  const drawTick = (): void => {
-    if (!ring || !tick) return;
-    const r = new Spring(214, { stiffness: 60, damping: 14, mass: 1, restDelta: 0.5, restSpeed: 0.5 }, (v) => {
-      ring.style.strokeDashoffset = String(Math.max(0, v));
-    });
-    const t = new Spring(50, { stiffness: 140, damping: 16, mass: 1, restDelta: 0.5, restSpeed: 0.5 }, (v) => {
-      tick.style.strokeDashoffset = String(Math.max(0, v));
-    });
-    r.set(0);
-    window.setTimeout(() => t.set(0), 260);
-  };
-
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     let ok = true;
@@ -253,22 +232,22 @@ export function initBooking(): void {
 
     const out = new Spring(1, presets.snappy, (v) => {
       form.style.opacity = clamp01(v).toFixed(3);
-      form.style.transform = `translate3d(0, ${((1 - v) * -12).toFixed(2)}px, 0)`;
+      form.style.transform = `translate3d(0, ${((1 - v) * -10).toFixed(2)}px, 0)`;
     });
     out.onRest(() => {
       form.hidden = true;
       done.hidden = false;
       const enter = new Spring(0, presets.gentle, (v) => {
         done.style.opacity = clamp01(v).toFixed(3);
-        done.style.transform = `translate3d(0, ${((1 - v) * 18).toFixed(2)}px, 0)`;
+        done.style.transform = `translate3d(0, ${((1 - v) * 16).toFixed(2)}px, 0)`;
       });
       enter.onRest(() => {
         done.style.opacity = '';
         done.style.transform = '';
       });
       enter.set(1);
-      drawTick();
-      window.setTimeout(() => done.querySelector<HTMLElement>('[data-close]')?.focus({ preventScroll: true }), 80);
+      window.setTimeout(() => stampSpring.set([1, 1]), 260);
+      window.setTimeout(() => done.querySelector<HTMLElement>('[data-close]')?.focus({ preventScroll: true }), 120);
     });
     out.set(0);
   });

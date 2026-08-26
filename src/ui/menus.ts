@@ -1,6 +1,6 @@
 /**
- * Menus: renders the seasonal and Sunday roast panels from data and runs
- * the segmented control (sprung thumb, panel crossfade, roving tabindex).
+ * Menus: renders the seasonal and Sunday roast panels onto the printed card
+ * and runs the tabs (sprung underline, panel crossfade, roving tabindex).
  */
 import { seasonal, roast, menuFootnote, type Dish, type Course } from '../data/menus';
 import { initHover } from '../motion/hover';
@@ -13,11 +13,6 @@ const BASE = import.meta.env.BASE_URL;
 const esc = (s: string): string =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-function tags(list?: string[]): string {
-  if (!list?.length) return '';
-  return `<span class="dish__tags">${list.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</span>`;
-}
-
 function dish(d: Dish): string {
   return `<li data-reveal>
     <div class="dish" data-hover="subtle">
@@ -27,7 +22,7 @@ function dish(d: Dish): string {
         <span class="dish__price">${esc(d.price)}</span>
       </div>
       ${d.desc ? `<p class="dish__desc">${esc(d.desc)}</p>` : ''}
-      ${tags(d.tags)}
+      ${d.tags?.length ? `<span class="dish__tags">${esc(d.tags.join(' · '))}</span>` : ''}
     </div>
   </li>`;
 }
@@ -38,45 +33,33 @@ function course(c: Course): string {
       <h3 class="course__title">${esc(c.title)}</h3>
       ${c.note ? `<span class="course__note">${esc(c.note)}</span>` : ''}
     </div>
-    <ul class="dishes" data-stagger="45">${c.dishes.map(dish).join('')}</ul>
+    <ul class="dishes" data-stagger="40">${c.dishes.map(dish).join('')}</ul>
   </section>`;
 }
 
 function seasonalPanel(): string {
-  return `${seasonal.map(course).join('')}
-    <p class="menu-panel__foot" data-reveal>${esc(menuFootnote)}</p>`;
+  return `${seasonal.map(course).join('')}<p class="menu-panel__foot" data-reveal>${esc(menuFootnote)}</p>`;
 }
 
 function roastPanel(): string {
-  return `<div class="roast-hero on-dark" data-reveal="weight">
-      <div class="roast-hero__img">
-        <img src="${BASE}images/roast-800.webp"
-             srcset="${BASE}images/roast-480.webp 480w, ${BASE}images/roast-800.webp 800w, ${BASE}images/roast-1200.webp 1200w"
-             sizes="(min-width: 760px) 40vw, 92vw"
-             alt="Carving a golden roast at the table" loading="lazy" decoding="async" />
+  return `<div class="roast-hero" data-reveal="weight">
+      <div class="band">
+        <img src="${BASE}images/roast-800.webp" srcset="${BASE}images/roast-480.webp 480w, ${BASE}images/roast-800.webp 800w, ${BASE}images/roast-1200.webp 1200w" sizes="(min-width: 760px) 40vw, 92vw" alt="Carving a roast at the table" loading="lazy" decoding="async" />
       </div>
       <div class="roast-hero__text">
-        <p class="eyebrow">${esc(roast.eyebrow)}</p>
+        <p class="sc">${esc(roast.eyebrow)}</p>
         <h3>${esc(roast.title)}</h3>
         <p>${esc(roast.intro)}</p>
       </div>
     </div>
     <section class="course">
-      <div class="course__head" data-reveal>
-        <h3 class="course__title">The roasts</h3>
-        <span class="course__note">all with the trimmings</span>
-      </div>
-      <ul class="dishes" data-stagger="45">${roast.roasts.map(dish).join('')}</ul>
+      <div class="course__head" data-reveal><h3 class="course__title">The roasts</h3><span class="course__note">all with the trimmings</span></div>
+      <ul class="dishes" data-stagger="40">${roast.roasts.map(dish).join('')}</ul>
     </section>
-    <div class="trimmings" data-reveal>
-      <h4>With every roast</h4>
-      <p>${esc(roast.trimmings)}</p>
-    </div>
+    <div class="trimmings" data-reveal><h4>With every roast</h4><p>${esc(roast.trimmings)}</p></div>
     <section class="course">
-      <div class="course__head" data-reveal>
-        <h3 class="course__title">A bit extra</h3>
-      </div>
-      <ul class="dishes" data-stagger="45">${roast.extras.map(dish).join('')}</ul>
+      <div class="course__head" data-reveal><h3 class="course__title">A bit extra</h3></div>
+      <ul class="dishes" data-stagger="40">${roast.extras.map(dish).join('')}</ul>
     </section>
     <p class="menu-panel__foot" data-reveal>${esc(menuFootnote)}</p>`;
 }
@@ -84,34 +67,32 @@ function roastPanel(): string {
 export function initMenus(): void {
   const panelS = document.querySelector<HTMLElement>('[data-panel="seasonal"]');
   const panelR = document.querySelector<HTMLElement>('[data-panel="roast"]');
-  const seg = document.querySelector<HTMLElement>('.seg');
-  if (!panelS || !panelR || !seg) return;
+  const tabsWrap = document.querySelector<HTMLElement>('.card__tabs');
+  if (!panelS || !panelR || !tabsWrap) return;
 
   panelS.innerHTML = seasonalPanel();
   panelR.innerHTML = roastPanel();
 
   const panels: Record<string, HTMLElement> = { seasonal: panelS, roast: panelR };
-  const tabs = Array.from(seg.querySelectorAll<HTMLButtonElement>('[data-tab]'));
-  const thumb = seg.querySelector<HTMLElement>('.seg__thumb');
+  const tabs = Array.from(tabsWrap.querySelectorAll<HTMLButtonElement>('[data-tab]'));
+  const underline = tabsWrap.querySelector<HTMLElement>('.card__underline');
   let current = 'seasonal';
   let busy = false;
 
-  const thumbSpring = new SpringVector([0, 0], presets.snappy, ([x = 0, w = 0]) => {
-    if (!thumb) return;
-    thumb.style.transform = `translate3d(${x.toFixed(1)}px, 0, 0)`;
-    thumb.style.width = `${w.toFixed(1)}px`;
+  const ul = new SpringVector([0, 0], presets.snappy, ([x = 0, w = 0]) => {
+    if (!underline) return;
+    underline.style.transform = `translate3d(${x.toFixed(1)}px, 0, 0)`;
+    underline.style.width = `${w.toFixed(1)}px`;
   });
-
-  const placeThumb = (snap = false): void => {
+  const place = (snap = false): void => {
     const tab = tabs.find((t) => t.dataset.tab === current);
     if (!tab) return;
     const target = [tab.offsetLeft, tab.offsetWidth];
-    snap ? thumbSpring.snap(target) : thumbSpring.set(target);
+    snap ? ul.snap(target) : ul.set(target);
   };
-
-  placeThumb(true);
-  window.addEventListener('resize', () => placeThumb(true), { passive: true });
-  if (document.fonts?.ready) document.fonts.ready.then(() => placeThumb(true));
+  place(true);
+  window.addEventListener('resize', () => place(true), { passive: true });
+  if (document.fonts?.ready) document.fonts.ready.then(() => place(true));
 
   const select = (key: string, focusTab = false): void => {
     const to = panels[key];
@@ -119,18 +100,17 @@ export function initMenus(): void {
     if (!to || !from || key === current || busy) return;
     busy = true;
     current = key;
-
     tabs.forEach((t) => {
       const on = t.dataset.tab === key;
       t.setAttribute('aria-selected', String(on));
       t.tabIndex = on ? 0 : -1;
       if (on && focusTab) t.focus();
     });
-    placeThumb();
+    place();
 
     const out = new Spring(1, presets.snappy, (v) => {
       from.style.opacity = clamp01(v).toFixed(3);
-      from.style.transform = `translate3d(0, ${((1 - v) * -10).toFixed(2)}px, 0)`;
+      from.style.transform = `translate3d(0, ${((1 - v) * -8).toFixed(2)}px, 0)`;
     });
     out.onRest(() => {
       from.hidden = true;
@@ -140,7 +120,7 @@ export function initMenus(): void {
       measure();
       const enter = new Spring(0, presets.gentle, (v) => {
         to.style.opacity = clamp01(v).toFixed(3);
-        to.style.transform = `translate3d(0, ${((1 - v) * 18).toFixed(2)}px, 0)`;
+        to.style.transform = `translate3d(0, ${((1 - v) * 16).toFixed(2)}px, 0)`;
       });
       enter.onRest(() => {
         to.style.opacity = '';
