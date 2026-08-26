@@ -1,0 +1,66 @@
+/* ------------------------------------------------------------------
+   The Prince of Wales, Iffley — design tokens
+   A hearth palette: bottle green ground, flour-cream paper, ember
+   amber light, aged brass detail. Dark-first; cream sections are the
+   "printed card" interludes.
+   ------------------------------------------------------------------ */
+:root {
+  /* greens */
+  --ink: #0c1912; /* deepest ground — hero, footer */
+  --ink-2: #12241b; /* events / evening */
+  --moss: #1c392c; /* bottle green */
+  --fern: #33594a; /* mid green, borders on dark */
+  --sage: #8fa590; /* soft daylight green */
+  --sage-light: #e6ebdd; /* garden ground */
+
+  /* creams */
+  --flour: #faf5ea; /* bakery ground */
+  --cream: #f3e9d5;
+  --parchment: #e8dbbd; /* menu card */
+  --parchment-deep: #d9c9a3;
+
+  /* light */
+  --amber: #d8963a;
+  --amber-bright: #f2b45c;
+  --ember: #a8472a;
+  --brass: #b28f4e;
+  --brass-dim: #7c6236;
+  --brass-on-dark: #c9a462;
+
+  /* text */
+  --on-dark: var(--cream);
+  --on-dark-muted: rgba(243, 233, 213, 0.72);
+  --on-light: var(--ink);
+  --on-light-muted: rgba(12, 25, 18, 0.7);
+
+  /* type */
+  --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --font-body: 'Instrument Sans', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+
+  --fs-display: clamp(3.2rem, 14vw, 7.5rem);
+  --fs-h2: clamp(2.1rem, 7.5vw, 4.2rem);
+  --fs-h3: clamp(1.6rem, 6vw, 2.6rem);
+  --fs-h4: 1.25rem;
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9375rem;
+  --fs-eyebrow: 0.72rem;
+
+  /* layout */
+  --gutter: clamp(1.25rem, 5vw, 3.5rem);
+  --container: 72rem;
+  --measure: 36rem;
+  --nav-h: 66px;
+  --section-pad: clamp(4.5rem, 12vw, 9rem);
+
+  --radius-sm: 8px;
+  --radius: 16px;
+  --radius-lg: 24px;
+
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 20px 50px -24px rgba(0, 0, 0, 0.55);
+  --shadow-lift: 0 30px 60px -28px rgba(0, 0, 0, 0.6);
+
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+
+  color-scheme: dark;
+}

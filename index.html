@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>The Prince of Wales, Iffley — a village pub by the Thames, Oxford</title>
+    <meta
+      name="description"
+      content="Once the village bakery, a pub since the 1880s, now independently run by Sage &amp; Mathew. Seasonal British food, Sunday roasts, local ales and a garden a short walk from Iffley Lock."
+    />
+    <meta name="theme-color" content="#0c1912" />
+    <meta property="og:title" content="The Prince of Wales, Iffley" />
+    <meta property="og:description" content="A village bakery that became a pub — restored, independent, and a stroll from Iffley Lock." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://alexwilder-dev.github.io/prince-of-wales-iffley-demo/images/hero-1200.webp" />
+    <meta property="og:url" content="https://alexwilder-dev.github.io/prince-of-wales-iffley-demo/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="/images/hero-640.webp" media="(max-width: 640px)" />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <!-- ============ NAV ============ -->
+    <header class="nav" id="nav">
+      <div class="nav__bg" aria-hidden="true"></div>
+      <div class="nav__inner container">
+        <a class="nav__brand" href="#top" aria-label="The Prince of Wales, Iffley — back to top">
+          <svg class="nav__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M32 50V22c0-6 3-11 8-14-1 6-2 11-8 14" />
+              <path d="M32 50c0-10-5-19-13-24 1 8 6 15 13 20" />
+              <path d="M32 50c0-10 5-19 13-24-1 8-6 15-13 20" />
+            </g>
+            <path d="M22 54h20" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+          </svg>
+          <span class="nav__word">The Prince <em>at Iffley</em></span>
+        </a>
+
+        <nav class="nav__links" aria-label="Sections">
+          <a href="#story" data-nav>Our story</a>
+          <a href="#menus" data-nav>Menus</a>
+          <a href="#whats-on" data-nav>What's on</a>
+          <a href="#garden" data-nav>Garden &amp; walks</a>
+          <a href="#hire" data-nav>Private hire</a>
+          <a href="#find-us" data-nav>Find us</a>
+          <span class="nav__indicator" aria-hidden="true"></span>
+        </nav>
+
+        <div class="nav__actions">
+          <button class="btn btn--primary btn--sm" type="button" data-book data-hover="button">Book a table</button>
+          <button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+            <span class="nav__burger-line"></span>
+            <span class="nav__burger-line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- full-screen menu (mobile) -->
+    <div class="menu" id="menu" hidden>
+      <div class="menu__scrim" aria-hidden="true"></div>
+      <nav class="menu__panel" aria-label="Site">
+        <ul class="menu__list">
+          <li><a href="#story" data-menu-link>Our story</a></li>
+          <li><a href="#menus" data-menu-link>Menus</a></li>
+          <li><a href="#whats-on" data-menu-link>What's on</a></li>
+          <li><a href="#garden" data-menu-link>Garden &amp; walks</a></li>
+          <li><a href="#hire" data-menu-link>Private hire</a></li>
+          <li><a href="#find-us" data-menu-link>Find us</a></li>
+        </ul>
+        <div class="menu__foot">
+          <a class="menu__phone" href="tel:+441865586379">01865 586 379</a>
+          <p class="menu__hours">Open from noon, every day.<br />Sunday roasts 12–5.</p>
+          <button class="btn btn--primary btn--block" type="button" data-book>Book a table</button>
+        </div>
+      </nav>
+    </div>
+
+    <main id="main">
+      <!-- ============ HERO ============ -->
+      <section class="hero" id="top" aria-label="Welcome">
+        <div class="hero__media" aria-hidden="true">
+          <img
+            class="hero__img"
+            src="/images/hero-1200.webp"
+            srcset="/images/hero-640.webp 640w, /images/hero-1200.webp 1200w, /images/hero-1800.webp 1800w"
+            sizes="100vw"
+            alt=""
+            fetchpriority="high"
+            decoding="async"
+          />
+        </div>
+        <div class="hero__veil" aria-hidden="true"></div>
+        <div class="hero__glow hero__glow--a" aria-hidden="true"></div>
+        <div class="hero__glow hero__glow--b" aria-hidden="true"></div>
+
+        <div class="hero__content container">
+          <p class="eyebrow hero__eyebrow" data-reveal data-delay="150">Iffley village · Oxford</p>
+          <h1 class="hero__title">
+            <span class="hero__line" data-reveal="weight" data-delay="260">The Prince</span>
+            <span class="hero__line" data-reveal="weight" data-delay="380">of Wales</span>
+            <span class="hero__line hero__line--at" data-reveal="weight" data-delay="520"><em>at Iffley</em></span>
+          </h1>
+          <p class="hero__lede" data-reveal data-delay="720">
+            A village bakery that became a pub. Restored, independent, and a stroll from the lock.
+          </p>
+          <div class="hero__cta" data-reveal data-delay="860">
+            <button class="btn btn--primary" type="button" data-book data-hover="button">Book a table</button>
+            <a class="link-arrow" href="#story" data-scroll>
+              Read our story
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 5v14M5 12l7 7 7-7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <ul class="hero__strip" aria-label="In brief">
+          <li>Once the village bakery</li>
+          <li>A pub since the 1880s</li>
+          <li>Independent today</li>
+        </ul>
+      </section>
+
+      <!-- ============ STORY ============ -->
+      <section class="story" id="story" aria-labelledby="story-title">
+        <div class="story__bg" aria-hidden="true">
+          <div class="era era--bakery"></div>
+          <div class="era era--victorian" data-era-layer="1"></div>
+          <div class="era era--restored" data-era-layer="2"></div>
+          <div class="era era--today" data-era-layer="3"></div>
+          <div class="story__light" data-story-light></div>
+        </div>
+
+        <div class="thread" aria-hidden="true">
+          <div class="thread__fill" data-thread-fill></div>
+        </div>
+
+        <header class="story__intro container on-light">
+          <p class="eyebrow" data-reveal>Our story</p>
+          <h2 id="story-title" data-reveal data-delay="80">One building.<br />Three lives.</h2>
+          <p class="lede" data-reveal data-delay="160">
+            Number 73 Church Way has been feeding Iffley for the best part of two centuries. Scroll on.
+          </p>
+        </header>
+
+        <article class="chapter chapter--bakery on-light" data-chapter="0">
+          <div class="chapter__media" data-reveal="weight">
+            <div class="chapter__frame grain">
+              <img
+                src="/images/bakery-800.webp"
+                srcset="/images/bakery-480.webp 480w, /images/bakery-800.webp 800w, /images/bakery-1200.webp 1200w"
+                sizes="(min-width: 900px) 42vw, 88vw"
+                alt="Rustic loaves dusted with flour beside ears of wheat"
+                loading="lazy"
+                decoding="async"
+                data-parallax="0.09"
+              />
+            </div>
+            <span class="chapter__caption">Loaves before pints</span>
+          </div>
+          <div class="chapter__text">
+            <p class="chapter__year" data-reveal><span class="thread__dot" data-thread-dot></span>Chapter one · The 1800s</p>
+            <h3 class="chapter__title" data-reveal data-delay="90">The Bakery</h3>
+            <p data-reveal data-delay="180">
+              Long before anyone pulled a pint here, this was where Iffley got its bread. The building
+              began life as the village bakery — ovens lit before dawn, flour in the air, the smell
+              of the morning batch drifting down Church Way towards the river.
+            </p>
+            <p data-reveal data-delay="260">
+              The thick walls that kept the ovens warm are still standing. So, we like to think, is
+              the habit of the village coming through the door for something good.
+            </p>
+          </div>
+        </article>
+
+        <article class="chapter chapter--victorian on-dark" data-chapter="1">
+          <div class="chapter__media" data-reveal="weight">
+            <div class="chapter__frame grain">
+              <img
+                src="/images/victorian-800.webp"
+                srcset="/images/victorian-480.webp 480w, /images/victorian-800.webp 800w, /images/victorian-1200.webp 1200w"
+                sizes="(min-width: 900px) 42vw, 88vw"
+                alt="A pint of ale on a dark timber bar in low light"
+                loading="lazy"
+                decoding="async"
+                data-parallax="0.09"
+              />
+            </div>
+            <span class="chapter__caption">Gaslight, brass and bitter</span>
+          </div>
+          <div class="chapter__text">
+            <p class="chapter__year" data-reveal><span class="thread__dot" data-thread-dot></span>Chapter two · The 1880s</p>
+            <h3 class="chapter__title" data-reveal data-delay="90">A pub is born</h3>
+            <p data-reveal data-delay="180">
+              By the 1880s the ovens had cooled and the taps had opened. The bakery became the Prince
+              of Wales: a proper village local of dark wood and polished brass, where lock-keepers,
+              college servants and boatmen drank shoulder to shoulder.
+            </p>
+            <p data-reveal data-delay="260">
+              It stayed that way for a century, give or take a coat of paint. In 1989 Wadworth, the
+              Devizes brewers, bought the house and kept the ale flowing for another generation.
+            </p>
+          </div>
+        </article>
+
+        <article class="chapter chapter--restored on-dark" data-chapter="2">
+          <div class="chapter__media" data-reveal="weight">
+            <div class="chapter__frame">
+              <img
+                src="/images/restored-800.webp"
+                srcset="/images/restored-480.webp 480w, /images/restored-800.webp 800w, /images/restored-1200.webp 1200w"
+                sizes="(min-width: 900px) 42vw, 88vw"
+                alt="A round pub table with ladder-back chairs, a candle and fresh flowers"
+                loading="lazy"
+                decoding="async"
+                data-parallax="0.09"
+              />
+            </div>
+            <span class="chapter__caption">The old bones, warmed through</span>
+          </div>
+          <div class="chapter__text">
+            <p class="chapter__year" data-reveal><span class="thread__dot" data-thread-dot></span>Chapter three · Independent again</p>
+            <h3 class="chapter__title" data-reveal data-delay="90">Restored by Sage &amp; Mathew</h3>
+            <p data-reveal data-delay="180">
+              Then Sage and Mathew took the Prince on as independents. They kept everything worth
+              keeping — the beams, the fireplaces, the timber bar — and added the comfort of a pub
+              you actually want to spend a whole afternoon in.
+            </p>
+            <p data-reveal data-delay="260">
+              Proper chairs. A kitchen that cooks with the seasons. Ales from down the road. The
+              kind of welcome that remembers your name the second time.
+            </p>
+          </div>
+        </article>
+
+        <article class="chapter chapter--today on-light" data-chapter="3">
+          <div class="chapter__media" data-reveal="weight">
+            <div class="chapter__frame">
+              <img
+                src="/images/lock-800.webp"
+                srcset="/images/lock-480.webp 480w, /images/lock-800.webp 800w, /images/lock-1200.webp 1200w"
+                sizes="(min-width: 900px) 42vw, 88vw"
+                alt="A tree in autumn colour leaning over still, misty river water"
+                loading="lazy"
+                decoding="async"
+                data-parallax="0.09"
+              />
+            </div>
+            <span class="chapter__caption">Five minutes to the water</span>
+          </div>
+          <div class="chapter__text">
+            <p class="chapter__year" data-reveal><span class="thread__dot" data-thread-dot></span>Chapter four · Now</p>
+            <h3 class="chapter__title" data-reveal data-delay="90">Today, by the lock</h3>
+            <p data-reveal data-delay="180">
+              Today the Prince sits a short stroll from Iffley Lock and the Thames. Seasonal British
+              cooking, a Sunday roast people cross the city for, local ales on the handpumps, and a
+              garden that fills the moment the sun appears.
+            </p>
+            <p data-reveal data-delay="260">Bread, beer, and a bit of both. Come and see.</p>
+            <div class="chapter__cta" data-reveal data-delay="340">
+              <button class="btn btn--primary" type="button" data-book data-hover="button">Book a table</button>
+              <a class="link-arrow" href="#menus" data-scroll>
+                See the menus
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============ MENUS ============ -->
+      <section class="section menus on-light" id="menus" aria-labelledby="menus-title">
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow" data-reveal>Menus</p>
+            <h2 id="menus-title" data-reveal data-delay="80">Cooked for the season, served without fuss</h2>
+            <p class="lede" data-reveal data-delay="160">
+              Modern British, mostly from within a morning's drive. The menu changes as the fields
+              do; the roast never does.
+            </p>
+          </header>
+
+          <div class="seg" role="tablist" aria-label="Choose a menu" data-reveal data-delay="220">
+            <button class="seg__tab" role="tab" type="button" id="tab-seasonal" aria-selected="true" aria-controls="panel-seasonal" data-tab="seasonal">
+              Seasonal menu
+            </button>
+            <button class="seg__tab" role="tab" type="button" id="tab-roast" aria-selected="false" aria-controls="panel-roast" data-tab="roast" tabindex="-1">
+              Sunday roast
+            </button>
+            <span class="seg__thumb" aria-hidden="true"></span>
+          </div>
+
+          <div class="menu-panels">
+            <div class="menu-panel" id="panel-seasonal" role="tabpanel" aria-labelledby="tab-seasonal" data-panel="seasonal"></div>
+            <div class="menu-panel" id="panel-roast" role="tabpanel" aria-labelledby="tab-roast" data-panel="roast" hidden></div>
+          </div>
+
+          <aside class="bar-note" data-reveal="weight">
+            <div class="bar-note__img">
+              <img
+                src="/images/ale-480.webp"
+                srcset="/images/ale-480.webp 480w, /images/ale-800.webp 800w"
+                sizes="(min-width: 700px) 220px, 96px"
+                alt="A pint of ale being pulled from a handpump"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div>
+              <p class="eyebrow">On the bar</p>
+              <h4>Ales from down the road</h4>
+              <p class="muted">
+                Three rotating handpumps of real ale from Oxfordshire and its neighbours, a couple
+                of craft lines on keg, local cider, and a short wine list we actually drink.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============ WHAT'S ON ============ -->
+      <section class="section events on-dark" id="whats-on" aria-labelledby="events-title">
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow" data-reveal>What's on</p>
+            <h2 id="events-title" data-reveal data-delay="80">Evenings worth leaving the house for</h2>
+            <p class="lede" data-reveal data-delay="160">
+              A quiz, some fiddles, a long autumn supper and a fire in the garden. Nothing you need a
+              ticket for, except the supper.
+            </p>
+          </header>
+          <ul class="events__list" data-events data-stagger="90"></ul>
+        </div>
+      </section>
+
+      <!-- ============ GARDEN & WALKS ============ -->
+      <section class="section garden on-light" id="garden" aria-labelledby="garden-title">
+        <div class="garden__hero">
+          <img
+            src="/images/meadow-1200.webp"
+            srcset="/images/meadow-640.webp 640w, /images/meadow-1200.webp 1200w, /images/meadow-1800.webp 1800w"
+            sizes="100vw"
+            alt="A meadow of buttercups in low golden light"
+            loading="lazy"
+            decoding="async"
+            data-parallax="0.14"
+          />
+        </div>
+        <div class="container">
+          <div class="garden__grid">
+            <header class="section-head">
+              <p class="eyebrow" data-reveal>The garden &amp; local walks</p>
+              <h2 id="garden-title" data-reveal data-delay="80">Between the village and the river</h2>
+              <p class="lede" data-reveal data-delay="160">
+                Our garden sits behind the pub under the apple trees — heaters and blankets when it
+                turns, a fire pit for the dark months. Five minutes' walk beyond it is Iffley Lock,
+                the Thames Path and some of the best flat walking in Oxford.
+              </p>
+            </header>
+            <figure class="garden__card" data-reveal="weight">
+              <div class="garden__frame">
+                <img
+                  src="/images/garden-800.webp"
+                  srcset="/images/garden-480.webp 480w, /images/garden-800.webp 800w"
+                  sizes="(min-width: 900px) 36vw, 88vw"
+                  alt="A gravel path between rose beds leading to a garden seat"
+                  loading="lazy"
+                  decoding="async"
+                  data-parallax="0.07"
+                />
+              </div>
+              <figcaption>
+                <strong>The garden</strong> — sixty of you under the trees, dogs welcome, the roast
+                served outside from May to September.
+              </figcaption>
+            </figure>
+          </div>
+
+          <h3 class="walks__title" data-reveal>Three walks from the door</h3>
+          <ul class="walks" data-walks data-stagger="90"></ul>
+          <p class="walks__note muted" data-reveal>
+            Ask at the bar for a printed map. Muddy boots and wet dogs are part of the furniture.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ PRIVATE HIRE ============ -->
+      <section class="section hire on-dark" id="hire" aria-labelledby="hire-title">
+        <div class="container hire__grid">
+          <div class="hire__media" data-reveal="weight">
+            <div class="hire__frame">
+              <img
+                src="/images/hire-800.webp"
+                srcset="/images/hire-480.webp 480w, /images/hire-800.webp 800w, /images/hire-1200.webp 1200w"
+                sizes="(min-width: 900px) 40vw, 88vw"
+                alt="A long table dressed with linen, glassware and wild flowers"
+                loading="lazy"
+                decoding="async"
+                data-parallax="0.08"
+              />
+            </div>
+            <div class="hire__frame hire__frame--small" data-reveal="scale" data-delay="200">
+              <img
+                src="/images/sharing-480.webp"
+                srcset="/images/sharing-480.webp 480w, /images/sharing-800.webp 800w"
+                sizes="200px"
+                alt="Friends sharing plates of food around a table, seen from above"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+          <div class="hire__text">
+            <header class="section-head">
+              <p class="eyebrow" data-reveal>Private hire</p>
+              <h2 id="hire-title" data-reveal data-delay="80">Your people, our pub</h2>
+              <p class="lede" data-reveal data-delay="160">
+                A birthday in the snug, a wedding lunch in the garden, or the whole place for the
+                night. We'll write a menu with you and look after the rest.
+              </p>
+            </header>
+            <ul class="spaces" data-stagger="90">
+              <li class="space" data-reveal>
+                <span class="space__cap">16</span>
+                <div>
+                  <h4>The Snug</h4>
+                  <p class="muted">The room with the fireplace. Long lunches, small birthdays, wakes done properly.</p>
+                </div>
+              </li>
+              <li class="space" data-reveal>
+                <span class="space__cap">60</span>
+                <div>
+                  <h4>The Garden</h4>
+                  <p class="muted">Summer parties under the apple trees; heaters, blankets and the fire pit for the rest of the year.</p>
+                </div>
+              </li>
+              <li class="space" data-reveal>
+                <span class="space__cap">90</span>
+                <div>
+                  <h4>The whole pub</h4>
+                  <p class="muted">Exclusive use for receptions, milestone birthdays and the Christmas do. Your menu, our team.</p>
+                </div>
+              </li>
+            </ul>
+            <div class="hire__cta" data-reveal>
+              <a class="btn btn--primary" href="mailto:reservations@princeofwalesiffley.co.uk?subject=Private%20hire%20enquiry" data-hover="button">Ask about a date</a>
+              <a class="link-arrow" href="tel:+441865586379">or call 01865 586 379</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FIND US ============ -->
+      <section class="section find on-light" id="find-us" aria-labelledby="find-title">
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow" data-reveal>Find us</p>
+            <h2 id="find-title" data-reveal data-delay="80">Church Way, Iffley</h2>
+            <p class="lede" data-reveal data-delay="160">
+              In the middle of the village, two minutes from St Mary's and five from the lock.
+            </p>
+          </header>
+
+          <div class="find__grid">
+            <div class="find__map" data-reveal="weight" data-map></div>
+
+            <div class="find__details">
+              <address class="find__address" data-reveal>
+                <strong>The Prince of Wales</strong><br />
+                73 Church Way, Iffley<br />
+                Oxford OX4 4EF
+              </address>
+
+              <ul class="find__contact" data-reveal data-delay="80">
+                <li>
+                  <a class="find__contact-link" href="tel:+441865586379" data-hover="subtle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" /></svg>
+                    01865 586 379
+                  </a>
+                </li>
+                <li>
+                  <a class="find__contact-link" href="mailto:reservations@princeofwalesiffley.co.uk" data-hover="subtle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+                    reservations@princeofwalesiffley.co.uk
+                  </a>
+                </li>
+              </ul>
+
+              <div class="hours" data-reveal data-delay="140">
+                <h4>Opening hours</h4>
+                <dl class="hours__list" data-hours></dl>
+              </div>
+
+              <div class="find__getting" data-reveal data-delay="200">
+                <h4>Getting here</h4>
+                <ul class="find__how">
+                  <li><strong>On foot or by bike</strong> — the Thames Path brings you to Iffley Lock; walk up Mill Lane and Church Way.</li>
+                  <li><strong>By bus</strong> — the 3 and 3A from the city centre stop at Iffley Turn, a five-minute walk.</li>
+                  <li><strong>By car</strong> — limited parking on Church Way; more on Iffley Road.</li>
+                </ul>
+                <a class="btn btn--ghost-light" href="https://www.google.com/maps/search/?api=1&query=The+Prince+of+Wales+73+Church+Way+Iffley+Oxford+OX4+4EF" target="_blank" rel="noopener" data-hover="button">
+                  Open in Google Maps
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="16" height="16"><path d="M7 17 17 7M8 7h9v9" /></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer on-dark">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <svg class="footer__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M32 50V22c0-6 3-11 8-14-1 6-2 11-8 14" />
+              <path d="M32 50c0-10-5-19-13-24 1 8 6 15 13 20" />
+              <path d="M32 50c0-10 5-19 13-24-1 8-6 15-13 20" />
+            </g>
+            <path d="M22 54h20" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+          </svg>
+          <p class="footer__name">The Prince of Wales<br /><em>at Iffley</em></p>
+          <p class="footer__line">Bread since the 1800s. Beer since the 1880s.</p>
+        </div>
+        <ul class="footer__links">
+          <li><a href="#story" data-scroll>Our story</a></li>
+          <li><a href="#menus" data-scroll>Menus</a></li>
+          <li><a href="#whats-on" data-scroll>What's on</a></li>
+          <li><a href="#garden" data-scroll>Garden &amp; walks</a></li>
+          <li><a href="#hire" data-scroll>Private hire</a></li>
+          <li><a href="#find-us" data-scroll>Find us</a></li>
+        </ul>
+        <ul class="footer__social">
+          <li>
+            <a href="https://instagram.com/princeatiffley" target="_blank" rel="noopener" data-hover="subtle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" /></svg>
+              @princeatiffley
+            </a>
+          </li>
+          <li>
+            <a href="https://facebook.com/theprinceatiffley" target="_blank" rel="noopener" data-hover="subtle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.5A.5.5 0 0 1 14 8Z" /></svg>
+              theprinceatiffley
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="container footer__small">
+        <p>© 2026 The Prince of Wales, Iffley. 73 Church Way, Oxford OX4 4EF.</p>
+        <p class="footer__demo">Concept site — a design proposal, not an official page. No bookings are taken here.</p>
+      </div>
+    </footer>
+
+    <!-- ============ BOOKING SHEET ============ -->
+    <div class="modal" id="booking" hidden>
+      <div class="modal__scrim" data-close></div>
+      <div class="modal__sheet on-light" role="dialog" aria-modal="true" aria-labelledby="booking-title" tabindex="-1">
+        <div class="modal__handle" aria-hidden="true"></div>
+        <button class="modal__close" type="button" aria-label="Close" data-close>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+        </button>
+
+        <form class="booking" novalidate data-booking-form>
+          <p class="eyebrow">Book a table</p>
+          <h2 id="booking-title" class="booking__title">Pull up a chair</h2>
+
+          <div class="field" data-field="date">
+            <label class="field__label" for="booking-date">Date</label>
+            <input class="field__input" id="booking-date" type="date" name="date" required />
+          </div>
+
+          <fieldset class="field" data-field="time">
+            <legend class="field__label">Time</legend>
+            <div class="chips" data-times></div>
+          </fieldset>
+
+          <div class="field field--row">
+            <span class="field__label" id="party-label">Guests</span>
+            <div class="stepper" role="group" aria-labelledby="party-label">
+              <button class="stepper__btn" type="button" data-step="-1" aria-label="Fewer guests" data-hover="button">−</button>
+              <output class="stepper__value" data-party aria-live="polite">2</output>
+              <button class="stepper__btn" type="button" data-step="1" aria-label="More guests" data-hover="button">+</button>
+            </div>
+          </div>
+
+          <p class="booking__note muted">Eight or more? Ring us on <a class="link-inline" href="tel:+441865586379">01865 586 379</a> and we'll sort it.</p>
+
+          <button class="btn btn--primary btn--block booking__submit" type="submit" data-hover="button">
+            <span class="booking__submit-label">Request a table</span>
+          </button>
+        </form>
+
+        <div class="booking__done" data-booking-done hidden>
+          <svg class="booking__check" viewBox="0 0 80 80" aria-hidden="true">
+            <circle class="booking__check-ring" cx="40" cy="40" r="34" fill="none" stroke="currentColor" stroke-width="2.5" />
+            <path class="booking__check-tick" d="M24 41l11 11 21-24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <h2 class="booking__title">Table requested</h2>
+          <p class="booking__summary" data-summary></p>
+          <p class="booking__demo">
+            This is a design preview — nothing has been sent. To book for real, call
+            <a class="link-inline" href="tel:+441865586379">01865 586 379</a>.
+          </p>
+          <button class="btn btn--ghost-light btn--block" type="button" data-close data-hover="button">Done</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
