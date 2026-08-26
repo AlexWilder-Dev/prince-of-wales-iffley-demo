@@ -145,6 +145,24 @@
   opacity: 0.55;
 }
 
+/* On phones the three facts stack; each gets a short brass rule instead of a dot. */
+@media (max-width: 599px) {
+  .hero__strip {
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .hero__strip li::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 1px;
+    margin: 0 0.6rem 0.2em 0;
+    background: currentColor;
+    opacity: 0.6;
+    vertical-align: middle;
+  }
+}
+
 @media (min-width: 900px) {
   .hero__content {
     padding-bottom: clamp(5rem, 12vh, 8rem);
