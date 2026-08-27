@@ -176,10 +176,14 @@ const pump: Mechanism = {
         gate,
       );
     }
+    // A beer engine is pulled TOWARDS the person serving — away from the spout
+    // and the glass, which sit to the right. So the handle swings left.
+    const PULL_ARC = -74;
+
     return (m) => {
       const pull = clamp01((m - 0.04) / 0.5);
       const fill = clamp01((m - 0.22) / 0.72);
-      if (handle) handle.style.transform = `rotate(${(74 * pull).toFixed(2)}deg)`;
+      if (handle) handle.style.transform = `rotate(${(PULL_ARC * pull).toFixed(2)}deg)`;
       const h = 86 * fill;
       if (beer) {
         beer.setAttribute('y', (208 - h).toFixed(2));
