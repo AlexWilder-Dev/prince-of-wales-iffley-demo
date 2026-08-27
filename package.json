@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && node scripts/check-html.mjs",
     "preview": "vite preview",
-    "images": "node scripts/images.mjs"
+    "images": "node scripts/images.mjs",
+    "check": "node scripts/check-html.mjs"
   },
   "devDependencies": {
     "sharp": "^0.34.3",
