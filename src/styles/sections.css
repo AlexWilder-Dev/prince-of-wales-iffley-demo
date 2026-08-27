@@ -1,5 +1,8 @@
 /* ==================================================================
-   HERO — the painted wall and the sign
+   HERO — the door on Church Way, after dark
+
+   Two wall lanterns come up one after the other, throwing warm pools onto
+   the paint; the sign hangs between them on its pendulum; then the words.
    ================================================================== */
 .hero {
   position: relative;
@@ -7,59 +10,92 @@
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: clamp(1.25rem, 4vh, 2.5rem);
   overflow: hidden;
   isolation: isolate;
   padding-top: calc(var(--nav-h) + var(--safe-top));
+  background: radial-gradient(120% 80% at 50% 0%, #0a1c23 0%, var(--petrol-deep) 70%);
 }
 
-.hero__window {
+.hero__scene {
+  position: relative;
+  width: 100%;
+  max-width: 46rem;
+  margin-inline: auto;
+  height: clamp(11rem, 25vh, 16.5rem);
+  flex: none;
+}
+
+/* the beam the sign hangs from */
+.hero__beam {
   position: absolute;
-  right: -30vmax;
-  bottom: -30vmax;
-  width: 90vmax;
-  height: 90vmax;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(224, 123, 31, 0.32) 0%, rgba(224, 123, 31, 0.1) 32%, rgba(224, 123, 31, 0) 62%);
-  pointer-events: none;
-  will-change: transform, opacity;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 6px;
+  background: linear-gradient(to bottom, #6a7175, #3a4145);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
 }
 
-.hero__inner {
-  display: grid;
-  gap: 1.5rem;
-  padding-top: 1.5rem;
-  padding-bottom: 2rem;
+.lamp {
+  position: absolute;
+  top: 4%;
+  width: clamp(44px, 12vw, 66px);
+}
+
+.lamp--l {
+  left: 3%;
+}
+
+.lamp--r {
+  right: 3%;
+}
+
+.lamp--r .lamp__svg {
+  transform: scaleX(-1);
+}
+
+.lamp__svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.lamp__pool {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  width: 46vmax;
+  height: 46vmax;
+  margin: -23vmax 0 0 -23vmax;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  will-change: opacity, transform;
+  background: radial-gradient(
+    circle,
+    rgba(240, 180, 100, 0.36) 0%,
+    rgba(240, 180, 100, 0.13) 30%,
+    rgba(240, 180, 100, 0) 62%
+  );
 }
 
 .sign {
-  position: relative;
-  width: 320px;
-  height: 222px;
-  margin-left: calc(-1 * var(--gutter));
-  scale: 0.88;
-  transform-origin: top left;
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  width: clamp(186px, 54vw, 258px);
+  margin-left: calc(clamp(186px, 54vw, 258px) / -2);
   -webkit-user-select: none;
   user-select: none;
 }
 
-.sign__bracket {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 320px;
-  height: 70px;
-}
-
 .sign__board {
-  position: absolute;
-  top: 24px;
-  left: 60px;
-  width: 240px;
-  transform-origin: 50% 12px;
+  transform-origin: 50% 10px;
   will-change: transform;
   cursor: grab;
-  filter: drop-shadow(0 18px 20px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 20px 22px rgba(0, 0, 0, 0.5));
 }
 
 .sign__board:active {
@@ -86,13 +122,15 @@
 }
 
 .hero__copy {
+  position: relative;
   display: grid;
-  gap: 1.1rem;
-  max-width: 34rem;
+  gap: 1rem;
+  max-width: 40rem;
+  will-change: transform, opacity;
 }
 
 .hero__copy h1 {
-  margin-top: 0.2rem;
+  margin-top: 0.1rem;
 }
 
 .hero__copy .lede {
@@ -105,33 +143,39 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem 1.5rem;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
 }
 
 .hero__cue {
-  padding: 0 var(--gutter) calc(1.4rem + var(--safe-bottom));
-  font-size: 0.82rem;
+  flex: none;
+  padding: 0 var(--gutter) calc(1.2rem + var(--safe-bottom));
+  font-size: 0.8rem;
   color: var(--on-paint-2);
 }
 
 @media (min-width: 900px) {
-  .hero__inner {
-    grid-template-columns: 7fr 5fr;
-    align-items: center;
-    gap: 3rem;
-    padding-top: 3rem;
+  .hero__scene {
+    height: clamp(15rem, 34vh, 21rem);
+    max-width: 44rem;
   }
-  .hero__copy {
-    order: 1;
+  .lamp {
+    width: 82px;
+  }
+  .lamp--l {
+    left: 0;
+  }
+  .lamp--r {
+    right: 0;
   }
   .sign {
-    order: 2;
-    justify-self: end;
-    margin-left: 0;
-    margin-right: -20px;
-    scale: 1.3;
-    transform-origin: top right;
-    height: 250px;
+    width: 320px;
+    margin-left: -160px;
+  }
+  .hero__copy {
+    max-width: var(--container);
+  }
+  .hero__copy .lede {
+    max-width: 34rem;
   }
 }
 

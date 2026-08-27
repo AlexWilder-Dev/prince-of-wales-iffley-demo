@@ -482,3 +482,65 @@
   opacity: 0.5;
   mix-blend-mode: screen;
 }
+
+/* ==================================================================
+   CHAPTER NUMERALS — a way through the story that isn't a gesture
+   ================================================================== */
+.chapters {
+  position: fixed;
+  z-index: 20;
+  right: clamp(6px, 1.6vw, 22px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 0.15rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms linear;
+}
+
+.chapters.is-on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.chapters button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  font-family: var(--font-sc);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--on-paint-2);
+  opacity: 0.5;
+}
+
+.chapters button.is-on {
+  color: var(--rust-hi);
+  opacity: 1;
+}
+
+.chapters button::after {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 1px;
+  margin-top: 3px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.chapters button.is-on::after {
+  width: 20px;
+}
+
+/* On the paper chapters the numerals need the ink, not the chalk. */
+.chapters.on-paper button {
+  color: var(--ink-2);
+}
+
+.chapters.on-paper button.is-on {
+  color: var(--rust-lo);
+}
+

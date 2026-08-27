@@ -13,8 +13,19 @@ by the lock.
 
 Built from the pub's own vernacular rather than a restaurant template:
 
-- **The sign.** The hero is a hanging pub sign — the Prince of Wales feathers, *Ich Dien*, Tuscan
-  lettering — on a pendulum spring. A breeze nudges it, scrolling shoves it, a tap sets it swinging.
+- **Arriving at the door.** The page opens unlit. One wall lantern comes up, then the other, each
+  throwing a pool of warm light onto the paint; the sign settles between them and starts to swing;
+  then the words. After that the gas flames never stop wandering, so the light on the wall is never
+  quite still. The sign is a real pendulum — a breeze nudges it, scrolling shoves it, a tap sets it
+  going — and it always settles.
+- **The story is paged, not scrolled.** Four scenes, each with a mechanism that has to play through
+  to mean anything; left to free scroll they smear past. So while the story holds the viewport, one
+  gesture moves one chapter and a spring carries you there, the mechanism playing out over the
+  travel and coming to rest exactly centred. It drives the real scroll position rather than pinning
+  and faking it, so the scrollbar stays honest and every scroll-linked effect carries on reading
+  `window.scrollY`. Ways out, deliberately: it releases at the first chapter going up and the last
+  going down, the numerals down the edge jump straight to a chapter, arrow/page/space/home/end all
+  work, there's a skip link, and `prefers-reduced-motion` turns the whole thing off.
 - **Four mechanisms.** Each chapter is a hand-drawn SVG object driven by scroll through a spring:
   the oven door lifts to show loaves glowing; a handpump pulls and a pint of bitter fills; the
   hearth catches and the name board is re-gilded; Iffley's mitre gates swing open and a rowing
@@ -58,7 +69,8 @@ feel (`gentle`, `heavy`, `snappy`, `hover`, `follow`, `drift`, `sheet`).
 - `reveal.ts` — `[data-reveal]` entrances with `data-delay` / `data-stagger`.
 - `hover.ts` — `[data-hover]` lift/press springs (hover only on pointers that can hover).
 - `ambient.ts` — overdamped random-walk drift for the window light.
-- `ui/sign.ts` — the pendulum (ζ≈0.1, so it swings a while and always settles).
+- `ui/sign.ts` — the pendulum (ζ≈0.1, so it sways a while and always settles).
+- `motion/snap.ts` — chapter paging: engagement, gesture intent, the exits and the numerals.
 - `ui/mech.ts` — the four mechanisms; `ui/story.ts` drives them from chapter progress.
 
 ## Scripts

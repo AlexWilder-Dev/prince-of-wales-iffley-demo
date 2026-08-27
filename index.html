@@ -42,6 +42,18 @@
         <path d="M12 66 h56 l-4 5 4 5 h-56 l4-5 z" fill="#f0eae1" stroke="#c9a24a" stroke-width="0.8" />
         <text x="40" y="74.6" text-anchor="middle" font-family="'IM Fell English SC', Georgia, serif" font-size="6.6" letter-spacing="1.2" fill="#0b1417">ich dien</text>
       </symbol>
+      <symbol id="lantern" viewBox="0 0 52 100">
+        <rect x="2" y="12" width="7" height="26" rx="2" fill="#4c5357"/>
+        <path d="M5.5 24 H26" stroke="#5d6468" stroke-width="4" stroke-linecap="round"/>
+        <path d="M7 38 C18 34 23 30 25.5 24" stroke="#5d6468" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M26 24 V34" stroke="#5d6468" stroke-width="3" stroke-linecap="round"/>
+        <path d="M14 42 h24 l-4 -8 h-16 z" fill="#5d6468"/>
+        <path d="M15 42 h22 l3 32 h-28 z" fill="#0b1417" fill-opacity=".5" stroke="#5d6468" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M26 42 V74 M16 58 H37" stroke="#5d6468" stroke-width="0.9" opacity=".55"/>
+        <path d="M12 74 h28 l-3 6 h-22 z" fill="#5d6468"/>
+        <path d="M26 80 v5" stroke="#5d6468" stroke-width="2"/>
+        <circle cx="26" cy="87" r="2.4" fill="#5d6468"/>
+      </symbol>
       <symbol id="plumes" viewBox="0 0 64 64">
         <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M32 50V22c0-6 3-11 8-14-1 6-2 11-8 14" />
@@ -96,56 +108,216 @@
     </div>
 
     <main id="main">
-      <!-- ============ HERO — the sign ============ -->
+      <!-- ============ HERO — the door on Church Way, after dark ============ -->
       <section class="hero paint grain" id="top" aria-label="Welcome">
-        <div class="hero__window" aria-hidden="true"></div>
-        <div class="hero__inner container">
-          <div class="sign" data-sign aria-hidden="false">
-            <svg class="sign__bracket" viewBox="0 0 320 70" aria-hidden="true">
-              <path d="M0 24 H298" stroke="#5d6468" stroke-width="6" stroke-linecap="round" />
-              <path d="M0 68 L118 26" stroke="#5d6468" stroke-width="4" stroke-linecap="round" />
-              <path d="M298 24 c10 0 14 8 8 14 c-5 5 -12 0 -9 -6" stroke="#5d6468" stroke-width="3" fill="none" stroke-linecap="round" />
-              <path d="M150 27 c-6 10 -2 18 8 18 c8 0 12 -8 6 -16" stroke="#5d6468" stroke-width="2.5" fill="none" stroke-linecap="round" />
-              <path d="M0 8 V70" stroke="#5d6468" stroke-width="8" />
+        <div class="hero__scene">
+          <div class="hero__beam" aria-hidden="true"></div>
+
+          <div class="lamp lamp--l" aria-hidden="true">
+            <div class="lamp__pool" data-pool></div>
+            <svg class="lamp__svg" viewBox="0 0 52 100">
+              <use href="#lantern" />
+              <ellipse data-flame cx="26" cy="60" rx="4.4" ry="9" fill="#f0b464" />
+              <ellipse data-core cx="26" cy="62" rx="1.9" ry="4.8" fill="#fbe1a0" />
             </svg>
+          </div>
+
+          <div class="lamp lamp--r" aria-hidden="true">
+            <div class="lamp__pool" data-pool></div>
+            <svg class="lamp__svg" viewBox="0 0 52 100">
+              <use href="#lantern" />
+              <ellipse data-flame cx="26" cy="60" rx="4.4" ry="9" fill="#f0b464" />
+              <ellipse data-core cx="26" cy="62" rx="1.9" ry="4.8" fill="#fbe1a0" />
+            </svg>
+          </div>
+
+          <div class="sign" data-sign>
             <div class="sign__board" data-sign-board>
               <svg class="sign__svg" viewBox="0 0 240 200" role="img" aria-labelledby="sign-title">
                 <title id="sign-title">The pub sign: the Prince of Wales feathers above the words The Prince of Wales</title>
-                <g stroke="#6a7175" stroke-width="2" fill="none">
-                  <path d="M44 0 v12 M196 0 v12" />
-                  <circle cx="44" cy="17" r="4.5" />
-                  <circle cx="196" cy="17" r="4.5" />
+                <g stroke="#6a7175" stroke-width="2.5" fill="none" stroke-linecap="round">
+                  <path d="M120 0 V5" />
+                  <circle cx="120" cy="10.5" r="5" />
+                  <path d="M120 16 V22" />
                 </g>
                 <rect class="sign__ground" x="4" y="22" width="232" height="174" stroke-width="2" />
                 <rect class="sign__rule" x="11" y="29" width="218" height="160" fill="none" stroke-width="1" />
                 <use href="#feathers" x="80" y="34" width="80" height="80" />
-                <text x="120" y="152" text-anchor="middle" font-family="Sancreek, 'IM Fell English', serif" font-size="27" class="sign__gold" letter-spacing="1">THE PRINCE</text>
-                <text x="120" y="177" text-anchor="middle" font-family="Sancreek, 'IM Fell English', serif" font-size="21" class="sign__gold" letter-spacing="1">OF WALES</text>
+                <text class="sign__gold" x="120" y="152" text-anchor="middle" font-family="Sancreek, 'IM Fell English', serif" font-size="27" letter-spacing="1">THE PRINCE</text>
+                <text class="sign__gold" x="120" y="177" text-anchor="middle" font-family="Sancreek, 'IM Fell English', serif" font-size="21" letter-spacing="1">OF WALES</text>
               </svg>
             </div>
           </div>
+        </div>
 
-          <div class="hero__copy">
-            <p class="sc" data-reveal data-delay="200">Independent · Iffley · Oxford</p>
-            <h1 data-reveal data-delay="320">The bakery that became the village pub.</h1>
-            <p class="lede" data-reveal data-delay="460">
-              Loaves came out of 73 Church Way for decades before the first pint went over the bar
-              in the 1880s. Independent again now, and five minutes from Iffley Lock.
+        <div class="hero__copy container">
+          <p class="sc" data-hero>Independent · Iffley · Oxford</p>
+          <h1 data-hero>The bakery that became<br />the village pub.</h1>
+          <p class="lede" data-hero>
+            Loaves came out of 73 Church Way for decades before the first pint went over the bar in
+            the 1880s. Independent again now, and five minutes from Iffley Lock.
+          </p>
+          <div class="hero__cta" data-hero>
+            <button class="btn btn--rust" type="button" data-book data-hover="button">Book a table</button>
+            <a class="link-arrow" href="#story">
+              Walk through the story
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <p class="hero__cue sc" data-hero aria-hidden="true">Scroll — the oven opens, the pump pulls, the lock gates swing</p>
+      </section>
+
+      <a class="skip skip--story" href="#menus">Skip the story</a>
+      <section class="story" id="story" aria-labelledby="story-title">
+        <nav class="chapters" aria-label="Chapters" data-chapters>
+          <button type="button" data-chapter-go="0"><span class="visually-hidden">Chapter one, the bakery</span><span aria-hidden="true">i</span></button>
+          <button type="button" data-chapter-go="1"><span class="visually-hidden">Chapter two, the 1880s</span><span aria-hidden="true">ii</span></button>
+          <button type="button" data-chapter-go="2"><span class="visually-hidden">Chapter three, restored</span><span aria-hidden="true">iii</span></button>
+          <button type="button" data-chapter-go="3"><span class="visually-hidden">Chapter four, today</span><span aria-hidden="true">iv</span></button>
+        </nav>
+        <div class="story__bg" aria-hidden="true">
+          <div class="era era--bakery"></div>
+          <div class="era era--victorian" data-era-layer="1"></div>
+          <div class="era era--restored" data-era-layer="2"></div>
+          <div class="era era--today" data-era-layer="3"></div>
+          <div class="story__light" data-story-light></div>
+        </div>
+        <div class="thread" aria-hidden="true"><div class="thread__fill" data-thread-fill></div></div>
+
+        <header class="story__intro container">
+          <p class="sc" data-reveal>Our story</p>
+          <h2 id="story-title" data-reveal data-delay="80">One building.<br />Bread, then beer.</h2>
+          <p class="lede" data-reveal data-delay="160">
+            Number 73 Church Way has fed Iffley for the best part of two centuries. Four chapters —
+            take them at your own pace.
+          </p>
+        </header>
+
+        <article class="chapter chapter--bakery" data-chapter="0">
+          <div class="chapter__mech" data-mech="oven" data-reveal="weight" role="img" aria-label="A brick bread oven; as you scroll, its iron door lifts to show loaves glowing inside."></div>
+          <div class="chapter__text">
+            <p class="chapter__label sc" data-reveal><span class="thread__dot" data-thread-dot></span>Chapter I · The bakery</p>
+            <h3 data-reveal data-delay="90">Before the beer, bread.</h3>
+            <p data-reveal data-delay="180">
+              Before it poured anything, 73 Church Way baked. This was Iffley's bakery: the oven lit
+              in the small hours, the village at the door for the morning batch, flour on every
+              surface and drifting out onto the lane.
             </p>
-            <div class="hero__cta" data-reveal data-delay="600">
-              <button class="btn btn--rust" type="button" data-book data-hover="button">Book a table</button>
-              <a class="link-arrow" href="#story">
-                Walk through the story
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7" /></svg>
+            <p data-reveal data-delay="260">
+              The walls are thick because they were built to hold heat. A century and a half on,
+              they still do.
+            </p>
+          </div>
+        </article>
+
+        <article class="chapter chapter--victorian" data-chapter="1">
+          <div class="chapter__mech" data-mech="pump" data-reveal="weight" role="img" aria-label="A Victorian handpump on a bar; as you scroll, the handle pulls and a pint of bitter fills."></div>
+          <div class="chapter__text">
+            <p class="chapter__label sc" data-reveal><span class="thread__dot" data-thread-dot></span>Chapter II · The 1880s</p>
+            <h3 data-reveal data-delay="90">A pub is born.</h3>
+            <p data-reveal data-delay="180">
+              In the 1880s the oven went cold and the handpumps went in. The Prince of Wales opened
+              as the village's own: gaslight, brass, a mahogany bar, and a bench of lock-keepers,
+              college servants and bargemen who knew exactly how they liked their bitter.
+            </p>
+            <p data-reveal data-delay="260">
+              It stayed that way for a hundred years, give or take a coat of paint.
+            </p>
+          </div>
+        </article>
+
+        <article class="chapter chapter--restored" data-chapter="2">
+          <div class="chapter__mech" data-mech="hearth" data-reveal="weight" role="img" aria-label="A fireplace beneath the pub's name board; as you scroll, the fire catches and the lettering is re-gilded."></div>
+          <div class="chapter__text">
+            <p class="chapter__label sc" data-reveal><span class="thread__dot" data-thread-dot></span>Chapter III · 1989 to now</p>
+            <h3 data-reveal data-delay="90">Restored by Sage &amp; Mathew.</h3>
+            <p data-reveal data-delay="180">
+              Wadworth of Devizes bought the house in 1989, and their ales have been on the
+              handpumps ever since. Sage and Mathew took the place on and run it as their own: they
+              kept the beams, the fireplaces and the timber bar, re-gilded the sign, and made every
+              chair one you'd happily lose an afternoon in.
+            </p>
+            <p data-reveal data-delay="260">Old bones, warmed through.</p>
+          </div>
+        </article>
+
+        <article class="chapter chapter--today" data-chapter="3">
+          <div class="chapter__mech" data-mech="lock" data-reveal="weight" role="img" aria-label="Iffley Lock seen from above; as you scroll, the mitre gates swing open and a rowing eight slides through."></div>
+          <div class="chapter__text">
+            <p class="chapter__label sc" data-reveal><span class="thread__dot" data-thread-dot></span>Chapter IV · Today</p>
+            <h3 data-reveal data-delay="90">Five minutes from the water.</h3>
+            <p data-reveal data-delay="180">
+              Today the Prince is the pub you walk up to from Iffley Lock, where the college eights
+              start their bumps races. Seasonal British cooking, a Sunday roast people cross the city
+              for, Oxfordshire ales on the handpumps, and a garden under the apple trees.
+            </p>
+            <p data-reveal data-delay="260">Bread and beer. Come and see.</p>
+            <div class="chapter__cta" data-reveal data-delay="340">
+              <button class="btn btn--ink" type="button" data-book data-hover="button">Book a table</button>
+              <a class="link-arrow" href="#menus">
+                See the menus
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </a>
             </div>
           </div>
+        </article>
+      </section>
+
+      <!-- ============ MENUS ============ -->
+      <section class="section menus paper" id="menus" aria-labelledby="menus-title">
+        <div class="container">
+          <header class="section-head">
+            <p class="sc" data-reveal>Menus</p>
+            <h2 id="menus-title" data-reveal data-delay="80">Bread from the oven. Then whatever the season's doing.</h2>
+            <p class="lede" data-reveal data-delay="160">
+              Modern British, bought close to home, changed as the fields change. The roast never
+              does.
+            </p>
+          </header>
+
+          <div class="card coach" data-reveal="weight">
+            <div class="card__tabs" role="tablist" aria-label="Choose a menu">
+              <button class="card__tab" role="tab" type="button" id="tab-seasonal" aria-selected="true" aria-controls="panel-seasonal" data-tab="seasonal">Seasonal</button>
+              <button class="card__tab" role="tab" type="button" id="tab-roast" aria-selected="false" aria-controls="panel-roast" data-tab="roast" tabindex="-1">Sunday roast</button>
+              <span class="card__underline" aria-hidden="true"></span>
+            </div>
+            <div class="menu-panels">
+              <div class="menu-panel" id="panel-seasonal" role="tabpanel" aria-labelledby="tab-seasonal" data-panel="seasonal"></div>
+              <div class="menu-panel" id="panel-roast" role="tabpanel" aria-labelledby="tab-roast" data-panel="roast" hidden></div>
+              </div>
+          </div>
         </div>
-        <p class="hero__cue sc" aria-hidden="true">Scroll — the oven opens, the pump pulls, the lock gates swing</p>
+
+        <div class="hero__copy container">
+          <p class="sc" data-hero>Independent · Iffley · Oxford</p>
+          <h1 data-hero>The bakery that became<br />the village pub.</h1>
+          <p class="lede" data-hero>
+            Loaves came out of 73 Church Way for decades before the first pint went over the bar
+            in the 1880s. Independent again now, and five minutes from Iffley Lock.
+          </p>
+          <div class="hero__cta" data-hero>
+            <button class="btn btn--rust" type="button" data-book data-hover="button">Book a table</button>
+            <a class="link-arrow" href="#story">
+              Walk through the story
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <p class="hero__cue sc" data-hero aria-hidden="true">Scroll — the oven opens, the pump pulls, the lock gates swing</p>
       </section>
 
       <!-- ============ STORY ============ -->
+      <a class="skip skip--story" href="#menus">Skip the story</a>
       <section class="story" id="story" aria-labelledby="story-title">
+        <nav class="chapters" aria-label="Chapters" data-chapters>
+          <button type="button" data-chapter-go="0"><span class="visually-hidden">Chapter one, the bakery</span><span aria-hidden="true">i</span></button>
+          <button type="button" data-chapter-go="1"><span class="visually-hidden">Chapter two, the 1880s</span><span aria-hidden="true">ii</span></button>
+          <button type="button" data-chapter-go="2"><span class="visually-hidden">Chapter three, restored</span><span aria-hidden="true">iii</span></button>
+          <button type="button" data-chapter-go="3"><span class="visually-hidden">Chapter four, today</span><span aria-hidden="true">iv</span></button>
+        </nav>
         <div class="story__bg" aria-hidden="true">
           <div class="era era--bakery"></div>
           <div class="era era--victorian" data-era-layer="1"></div>

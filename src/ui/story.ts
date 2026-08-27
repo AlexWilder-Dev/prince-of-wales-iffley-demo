@@ -1,12 +1,17 @@
 /**
- * The story scroll. Four chapters; as the reader moves through them the
- * page's ground crossfades through each era, a single light source travels
- * from the oven to the gas lamp to the hearth to daylight, a gold thread
- * fills down the margin — and each chapter's mechanism runs on a spring
- * that follows the reader's progress.
+ * The story scroll. Four chapters; as the reader moves through them the page's
+ * ground crossfades through each era, a single light source travels from the
+ * oven to the gas lamp to the hearth to daylight, a gold thread fills down the
+ * margin, and each chapter's mechanism runs on a spring.
+ *
+ * Everything is keyed to one number: `f`, the reader's position expressed as a
+ * fractional chapter index. At f === i chapter i is centred in the viewport —
+ * which is exactly where chapter paging comes to rest, so a settled chapter is
+ * always a fully played mechanism.
  */
 import { reducedMotion } from '../motion/prefs';
-import { onScroll, progress, track, viewport } from '../motion/scroll';
+import { onScroll, track, viewport } from '../motion/scroll';
+import { initChapterMarks, initSnap } from '../motion/snap';
 import { Spring, presets, clamp01, lerp } from '../motion/spring';
 import { mechanisms } from './mech';
 
@@ -18,27 +23,37 @@ const LIGHT: [number, number, number, number][] = [
   [0.5, -0.08, 1.55, 0.5], // daylight
 ];
 
-function mountMechanisms(story: HTMLElement): void {
-  story.querySelectorAll<HTMLElement>('[data-mech]').forEach((host) => {
-    const mech = mechanisms[host.dataset.mech ?? ''];
-    const chapter = host.closest<HTMLElement>('[data-chapter]');
-    if (!mech || !chapter) return;
+/** How far off-centre a chapter can be before its mechanism is fully at rest. */
+const MECH_REACH = 0.8;
+
+type MechSetter = (v: number) => void;
+
+function mountMechanisms(chapters: HTMLElement[]): MechSetter[] {
+  return chapters.map((chapter) => {
+    const host = chapter.querySelector<HTMLElement>('[data-mech]');
+    const mech = host ? mechanisms[host.dataset.mech ?? ''] : undefined;
+    if (!host || !mech) return () => {};
+
     host.innerHTML = mech.svg;
     const svg = host.querySelector('svg');
-    if (!svg) return;
+    if (!svg) return () => {};
     const update = mech.mount(svg, chapter);
 
     if (reducedMotion) {
       update(1);
-      return;
+      return () => {};
     }
-    // A heavy-ish follower: the mechanism lags the scroll and settles.
-    const m = new Spring(0, { stiffness: 60, damping: 16, mass: 1.2, restDelta: 0.001, restSpeed: 0.001 }, update);
+
+    // A heavy-ish follower, so the mechanism lags the reader and settles.
+    const spring = new Spring(
+      0,
+      { stiffness: 60, damping: 16, mass: 1.2, restDelta: 0.001, restSpeed: 0.001 },
+      update,
+    );
     update(0);
-    progress(chapter, (p) => {
-      const target = clamp01((p - 0.22) / 0.3);
-      if (Math.abs(target - m.target) > 0.0005) m.set(target);
-    });
+    return (v: number) => {
+      if (Math.abs(v - spring.target) > 0.0005) spring.set(v);
+    };
   });
 }
 
@@ -46,20 +61,45 @@ export function initStory(): void {
   const story = document.getElementById('story');
   if (!story) return;
 
-  mountMechanisms(story);
+  const chapters = Array.from(story.querySelectorAll<HTMLElement>('[data-chapter]'));
+  if (chapters.length < 2) return;
+
+  const setMech = mountMechanisms(chapters);
 
   const layers = [1, 2, 3]
     .map((i) => story.querySelector<HTMLElement>(`[data-era-layer="${i}"]`))
     .filter((el): el is HTMLElement => el !== null);
   const light = story.querySelector<HTMLElement>('[data-story-light]');
   const fill = story.querySelector<HTMLElement>('[data-thread-fill]');
-  const chapters = Array.from(story.querySelectorAll<HTMLElement>('[data-chapter]'));
   const dots = Array.from(story.querySelectorAll<HTMLElement>('[data-thread-dot]'));
-  if (chapters.length < 2) return;
 
   const storyT = track(story);
   const chapterT = chapters.map((c) => track(c));
   const last = chapterT.length - 1;
+
+  /* ---- chapter paging ---- */
+  let marks: ReturnType<typeof initChapterMarks> | null = null;
+  const goTo = initSnap({
+    section: story,
+    items: chapters,
+    onIndex: (i) => {
+      marks?.setActive(i);
+      paintMarks(i);
+    },
+    onEngage: (on) => marks?.setVisible(on),
+  });
+  marks = initChapterMarks(chapters.length, goTo);
+  marks.setActive(0);
+
+  // chapters one and four are on paper, two and three on paint
+  const nav = document.querySelector<HTMLElement>('[data-chapters]');
+  const onPaper = chapters.map(
+    (c) => c.classList.contains('chapter--bakery') || c.classList.contains('chapter--today'),
+  );
+  const paintMarks = (i: number): void => {
+    nav?.classList.toggle('on-paper', onPaper[i] === true);
+  };
+  paintMarks(0);
 
   const dotSprings = dots.map(
     (d) =>
@@ -77,6 +117,7 @@ export function initStory(): void {
     const vw = viewport.w;
     if (storyT.top > s + vh * 2 || storyT.top + storyT.height < s - vh) return;
 
+    // Where is the viewport's middle, as a fractional chapter index?
     const c = s + vh * 0.5;
     let f = 0;
     const first = chapterT[0]!;
@@ -96,6 +137,11 @@ export function initStory(): void {
           break;
         }
       }
+    }
+
+    // Each mechanism is fully played when its chapter is centred.
+    for (let i = 0; i < setMech.length; i++) {
+      setMech[i]!(1 - clamp01(Math.abs(f - i) / MECH_REACH));
     }
 
     layers.forEach((el, idx) => {
