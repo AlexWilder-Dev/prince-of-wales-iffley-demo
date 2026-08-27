@@ -1,41 +1,45 @@
 /* ------------------------------------------------------------------
    The Prince of Wales, Iffley — tokens
 
-   Bottle-green painted boards, gold-leaf signwriting, cream paper for
-   reading. Oxford's Fell types for headings, Caslon for text, a Victorian
-   Tuscan (Sancreek) for signwriting only.
+   The palette is sampled from the pub's own photographs rather than from
+   the idea of a pub. Their rooms are petrol teal (hue 189–197), the
+   timber and lamplight are burnt orange (hue 22–39) — near-complements,
+   which is why the real interiors look so alive. Gold appears only where
+   the pub uses gold: the signwriting.
    ------------------------------------------------------------------ */
 :root {
-  /* paint */
-  --green: #0f2a1e; /* the painted board */
-  --green-deep: #08150f; /* gaslight, the 1880s */
-  --green-2: #163628; /* raised panel */
-  --green-3: #244b39; /* mid */
-  --moss: #1b3a2c;
+  /* petrol — the colour the rooms are actually painted */
+  --petrol-deep: #071619; /* night; the deepest ground */
+  --petrol: #0c2029; /* the paint */
+  --teal-deep: #0d3c47; /* the back room */
+  --teal: #0f6273; /* the wall by the chess table */
 
-  /* paper */
-  --cream: #f1e7cf;
-  --cream-2: #e7dbbc; /* paper in shadow / rules */
-  --flour: #f8f2e3; /* the bakery */
-  --river: #e2e7da; /* today, by the water */
+  /* rust — timber, lamplight, the warm half of every room */
+  --rust-deep: #7c3606; /* the call-to-action plaque; chalk on top */
+  --rust: #b8590c; /* rules and edges on light */
+  --rust-bright: #e07b1f; /* thin marks that cross both grounds */
+  --rust-hi: #eb9d4c; /* labels and links on the paint */
+  --rust-lo: #93470a; /* labels and links on the paper */
 
-  /* gold leaf */
+  /* gold leaf — the signwriting, and nothing else */
   --gold: #c9a24a;
   --gold-hi: #ecca70;
-  --gold-lo: #8a6a2a;
 
-  /* ink & accents */
-  --ink: #17140f;
-  --ink-2: rgba(23, 20, 15, 0.7);
-  --ink-3: rgba(23, 20, 15, 0.45);
-  --ochre: #9c3b25; /* the stamp, the ribbon */
-  --plume: #efe6d3;
-  --amber: #f2b45c;
-  --water: #8fb0ae;
+  /* chalk — the paper */
+  --chalk: #f0eae1;
+  --flour: #f7f3ea; /* the bakery */
+  --river: #dfe6e5; /* today, by the water */
+
+  --stamp: #9c3b25;
+
+  /* ink */
+  --ink: #0b1417;
+  --ink-2: rgba(11, 20, 23, 0.7);
+  --ink-3: rgba(11, 20, 23, 0.45);
 
   /* text on paint */
-  --on-paint: var(--cream);
-  --on-paint-2: rgba(241, 231, 207, 0.72);
+  --on-paint: var(--chalk);
+  --on-paint-2: rgba(240, 234, 225, 0.72);
 
   /* type */
   --font-head: 'IM Fell English', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;

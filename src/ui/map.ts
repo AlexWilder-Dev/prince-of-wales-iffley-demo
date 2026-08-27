@@ -28,44 +28,44 @@ const SVG = `
     <path id="meadow-lane" d="M 262 112 C 205 100, 150 62, 118 38" />
   </defs>
 
-  <rect width="360" height="300" fill="#e6e0cb" />
-  <path d="M -10 40 C 40 70, 20 150, 60 200 S 120 280, 150 310 L -10 310 Z" fill="#d3dcc2" />
-  <ellipse cx="86" cy="118" rx="34" ry="24" fill="#c9d5b5" opacity="0.8" />
-  <ellipse cx="60" cy="230" rx="30" ry="20" fill="#c9d5b5" opacity="0.8" />
-  <path d="M 190 250 C 220 270, 260 300, 300 300 L 360 300 L 360 200 Z" fill="#dde0cd" opacity="0.7" />
+  <rect width="360" height="300" fill="#e7e2d8" />
+  <path d="M -10 40 C 40 70, 20 150, 60 200 S 120 280, 150 310 L -10 310 Z" fill="#d2d8c6" />
+  <ellipse cx="86" cy="118" rx="34" ry="24" fill="#c6cfba" opacity="0.8" />
+  <ellipse cx="60" cy="230" rx="30" ry="20" fill="#c6cfba" opacity="0.8" />
+  <path d="M 190 250 C 220 270, 260 300, 300 300 L 360 300 L 360 200 Z" fill="#dcdfd2" opacity="0.7" />
 
-  <use href="#river-path" fill="none" stroke="#9fbec1" stroke-width="30" stroke-linecap="round" />
-  <use href="#river-path" fill="none" stroke="#b7d1d2" stroke-width="22" stroke-linecap="round" />
-  <use href="#river-path" fill="none" stroke="#cfe1e0" stroke-width="2" stroke-dasharray="1 14" stroke-linecap="round" opacity="0.9" />
+  <use href="#river-path" fill="none" stroke="#8fb3bc" stroke-width="30" stroke-linecap="round" />
+  <use href="#river-path" fill="none" stroke="#a9c9d0" stroke-width="22" stroke-linecap="round" />
+  <use href="#river-path" fill="none" stroke="#c8dee2" stroke-width="2" stroke-dasharray="1 14" stroke-linecap="round" opacity="0.9" />
   <text class="map__label map__label--river" dy="-4"><textPath href="#river-path" startOffset="20%">River Thames</textPath></text>
 
   <use href="#thames-path" fill="none" stroke="#7f8c6e" stroke-width="1.6" stroke-dasharray="4 4" />
   <text class="map__label" dy="-4" font-size="8"><textPath href="#thames-path" startOffset="38%">Thames Path</textPath></text>
 
   <!-- Donnington Bridge -->
-  <path d="M 22 38 H 120" stroke="#c9c1a5" stroke-width="8" stroke-linecap="round" />
+  <path d="M 22 38 H 120" stroke="#cbc3a8" stroke-width="8" stroke-linecap="round" />
   <path d="M 22 38 H 120" stroke="#8a8468" stroke-width="1" stroke-dasharray="2 3" />
   <text class="map__label" x="74" y="28" text-anchor="middle" font-size="8">Donnington Bridge</text>
 
   <!-- lock -->
   <g transform="translate(92 190) rotate(48)">
-    <rect x="-18" y="-6" width="36" height="12" rx="1" fill="#e6e0cb" stroke="#4a5a52" stroke-width="1.6" />
-    <path d="M -18 0 H 18 M -6 -6 V 6 M 6 -6 V 6" stroke="#4a5a52" stroke-width="1.4" />
+    <rect x="-18" y="-6" width="36" height="12" rx="1" fill="#e7e2d8" stroke="#44534f" stroke-width="1.6" />
+    <path d="M -18 0 H 18 M -6 -6 V 6 M 6 -6 V 6" stroke="#44534f" stroke-width="1.4" />
   </g>
   <text class="map__label" x="112" y="176">Iffley Lock</text>
   <text class="map__label" x="112" y="286" font-size="8">to Sandford ↓</text>
 
-  <use href="#iffley-road" fill="none" stroke="#c9c1a5" stroke-width="9" stroke-linecap="round" />
-  <use href="#iffley-road" fill="none" stroke="#f3eed9" stroke-width="1.2" stroke-dasharray="6 6" />
+  <use href="#iffley-road" fill="none" stroke="#cbc3a8" stroke-width="9" stroke-linecap="round" />
+  <use href="#iffley-road" fill="none" stroke="#f4f0e4" stroke-width="1.2" stroke-dasharray="6 6" />
   <text class="map__label" dy="-7" font-size="8"><textPath href="#iffley-road" startOffset="50%">Iffley Road</textPath></text>
 
-  <use href="#church-way" fill="none" stroke="#cbc2a4" stroke-width="8" stroke-linecap="round" />
+  <use href="#church-way" fill="none" stroke="#cdc4a6" stroke-width="8" stroke-linecap="round" />
   <text class="map__label" dy="-6"><textPath href="#church-way" startOffset="6%">Church Way</textPath></text>
 
-  <use href="#meadow-lane" fill="none" stroke="#cbc2a4" stroke-width="5" stroke-linecap="round" />
+  <use href="#meadow-lane" fill="none" stroke="#cdc4a6" stroke-width="5" stroke-linecap="round" />
   <text class="map__label" dy="-5" font-size="8"><textPath href="#meadow-lane" startOffset="34%">Meadow Lane</textPath></text>
 
-  <use href="#mill-lane" fill="none" stroke="#cbc2a4" stroke-width="6" stroke-linecap="round" />
+  <use href="#mill-lane" fill="none" stroke="#cdc4a6" stroke-width="6" stroke-linecap="round" />
   <text class="map__label" dy="11" font-size="8"><textPath href="#mill-lane" startOffset="20%">Mill Lane</textPath></text>
 
   <text class="map__label" x="44" y="132" text-anchor="middle" font-size="8">Iffley</text>
@@ -74,18 +74,18 @@ const SVG = `
   <text class="map__label" x="270" y="292" text-anchor="middle" font-size="8">Iffley village</text>
 
   <g transform="translate(206 246)">
-    <rect x="-9" y="-6" width="18" height="12" fill="#f3eed9" stroke="#4a5a52" stroke-width="1.5" />
-    <path d="M -9 -6 L 0 -13 L 9 -6" fill="#f3eed9" stroke="#4a5a52" stroke-width="1.5" stroke-linejoin="round" />
-    <path d="M 0 -13 V -21 M -3 -18 H 3" stroke="#4a5a52" stroke-width="1.5" stroke-linecap="round" />
+    <rect x="-9" y="-6" width="18" height="12" fill="#f4f0e4" stroke="#44534f" stroke-width="1.5" />
+    <path d="M -9 -6 L 0 -13 L 9 -6" fill="#f4f0e4" stroke="#44534f" stroke-width="1.5" stroke-linejoin="round" />
+    <path d="M 0 -13 V -21 M -3 -18 H 3" stroke="#44534f" stroke-width="1.5" stroke-linecap="round" />
   </g>
   <text class="map__label" x="222" y="252" font-size="8">St Mary's</text>
 
   ${ROUTES.map((d, i) => `<path class="map__route" data-route-path="${i}" d="${d}" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />`).join('')}
 
   <g data-pin>
-    <circle data-pulse r="12" fill="#c9a24a" opacity="0.35" />
-    <path d="M 0 4 C -9 -6, -9 -14, 0 -18 C 9 -14, 9 -6, 0 4 Z" fill="#c9a24a" stroke="#17140f" stroke-width="1.5" stroke-linejoin="round" />
-    <circle cy="-9" r="3.2" fill="#17140f" />
+    <circle data-pulse r="12" fill="#c8741a" opacity="0.35" />
+    <path d="M 0 4 C -9 -6, -9 -14, 0 -18 C 9 -14, 9 -6, 0 4 Z" fill="#c8741a" stroke="#0b1417" stroke-width="1.5" stroke-linejoin="round" />
+    <circle cy="-9" r="3.2" fill="#0b1417" />
   </g>
   <text class="map__label map__label--pub" x="252" y="142">The Prince</text>
   <text class="map__label map__label--pub" x="252" y="156">of Wales</text>
@@ -93,7 +93,7 @@ const SVG = `
 
   <g transform="translate(26 70)">
     <circle r="11" fill="none" stroke="#7f8c6e" stroke-width="1" />
-    <path d="M 0 -9 L 3 2 L 0 0 L -3 2 Z" fill="#4a5a52" />
+    <path d="M 0 -9 L 3 2 L 0 0 L -3 2 Z" fill="#44534f" />
     <text class="map__label" y="-14" text-anchor="middle" font-size="7">N</text>
   </g>
 </svg>`;

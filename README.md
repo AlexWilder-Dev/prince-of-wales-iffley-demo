@@ -19,8 +19,16 @@ Built from the pub's own vernacular rather than a restaurant template:
   the oven door lifts to show loaves glowing; a handpump pulls and a pint of bitter fills; the
   hearth catches and the name board is re-gilded; Iffley's mitre gates swing open and a rowing
   eight slides through (the college bumps races start at Iffley Lock).
-- **Paint and paper.** Bottle-green painted boards with gold coach lines for the pub's voice;
-  cream paper for reading. Square corners throughout.
+- **Palette sampled from the photographs, not from the idea of a pub.** Running the pub's own
+  interiors through a colour sampler gives petrol teal (hue 189–197, saturation ~98) for the walls
+  and burnt orange (hue 22–39, saturation 100) for the timber and lamplight — near-complements,
+  which is why the real rooms look so alive. So: petrol paint, chalk paper, a burnt-sienna plaque
+  for the call to action, and gold reserved for the one thing that is actually gold, the
+  signwriting. Square corners throughout. (The first pass was bottle green, cream and gold — the
+  default every gastropub rebrand lands on, and wrong about this building, which is slate-blue
+  outside and petrol within.)
+- **The tiled threshold.** The bar floor here is black-and-white tile; a thin run of it sits under
+  the fascia and above the footer, the thresholds you cross on the way in and out.
 - **Type.** IM Fell English (Oxford's 17th-century Fell types) for headings, Libre Caslon for
   reading, Sancreek (Victorian English wood type) for signwriting only.
 - **Playbill, card, slip.** What's On is set as a Victorian playbill; menus as a printed card that

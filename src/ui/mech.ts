@@ -63,7 +63,7 @@ const oven: Mechanism = {
   svg: `<svg viewBox="0 0 320 240" aria-hidden="true">
   <defs>
     <radialGradient id="ovenGlow" cx="50%" cy="85%" r="75%">
-      <stop offset="0" stop-color="#f6c36b"/><stop offset=".45" stop-color="#c9682a"/><stop offset="1" stop-color="#2a1108"/>
+      <stop offset="0" stop-color="#f0b464"/><stop offset=".45" stop-color="#b8590c"/><stop offset="1" stop-color="#2a1006"/>
     </radialGradient>
     <clipPath id="ovenMouth"><path d="M96 214 V150 A64 58 0 0 1 224 150 V214 Z"/></clipPath>
   </defs>
@@ -74,16 +74,16 @@ const oven: Mechanism = {
   <path d="M28 214 V128 A132 108 0 0 1 292 128 V214" fill="none" stroke="currentColor" stroke-width="2"/>
   <g clip-path="url(#ovenMouth)">
     <rect data-glow x="96" y="88" width="128" height="128" fill="url(#ovenGlow)" opacity=".15"/>
-    <g data-loaves fill="#dca75e" stroke="#5a3210" stroke-width="1.4">
+    <g data-loaves fill="#d9a35c" stroke="#5a3210" stroke-width="1.4">
       <ellipse cx="126" cy="198" rx="26" ry="13"/><ellipse cx="164" cy="192" rx="30" ry="15"/><ellipse cx="200" cy="199" rx="23" ry="12"/>
       <path d="M114 194 l10 -6 M121 200 l10 -6 M150 186 l12 -7 M158 192 l12 -7 M191 196 l9 -5 M197 201 l9 -5" fill="none"/>
     </g>
     <g data-door>
-      <rect x="92" y="86" width="136" height="132" fill="#3a3834" stroke="#191816" stroke-width="2"/>
-      <rect x="102" y="96" width="116" height="112" fill="none" stroke="#5f5c55" stroke-width="1.5"/>
-      <path d="M92 130 H228 M92 174 H228" stroke="#5f5c55" stroke-width="1"/>
-      <circle cx="160" cy="176" r="5" fill="#8d8a83"/><path d="M148 176 H172" stroke="#191816" stroke-width="2.5"/>
-      <circle cx="104" cy="108" r="1.6" fill="#8d8a83"/><circle cx="216" cy="108" r="1.6" fill="#8d8a83"/><circle cx="104" cy="196" r="1.6" fill="#8d8a83"/><circle cx="216" cy="196" r="1.6" fill="#8d8a83"/>
+      <rect x="92" y="86" width="136" height="132" fill="#343a3c" stroke="#15191a" stroke-width="2"/>
+      <rect x="102" y="96" width="116" height="112" fill="none" stroke="#59605f" stroke-width="1.5"/>
+      <path d="M92 130 H228 M92 174 H228" stroke="#59605f" stroke-width="1"/>
+      <circle cx="160" cy="176" r="5" fill="#87908f"/><path d="M148 176 H172" stroke="#15191a" stroke-width="2.5"/>
+      <circle cx="104" cy="108" r="1.6" fill="#87908f"/><circle cx="216" cy="108" r="1.6" fill="#87908f"/><circle cx="104" cy="196" r="1.6" fill="#87908f"/><circle cx="216" cy="196" r="1.6" fill="#87908f"/>
     </g>
   </g>
   <path d="M96 214 V150 A64 58 0 0 1 224 150 V214" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -121,13 +121,13 @@ const pump: Mechanism = {
   svg: `<svg viewBox="0 0 320 240" aria-hidden="true">
   <defs>
     <clipPath id="pintClip"><path d="M226 116 h48 l-5 92 h-38 z"/></clipPath>
-    <radialGradient id="lampGlow"><stop offset="0" stop-color="#f2b45c" stop-opacity=".55"/><stop offset="1" stop-color="#f2b45c" stop-opacity="0"/></radialGradient>
+    <radialGradient id="lampGlow"><stop offset="0" stop-color="#f0b464" stop-opacity=".55"/><stop offset="1" stop-color="#f0b464" stop-opacity="0"/></radialGradient>
   </defs>
   <g transform="translate(46 62)">
     <path d="M0 0 h28 M28 0 v-12" stroke="currentColor" stroke-width="2" fill="none"/>
     <path d="M18 -12 h20 l-4 -14 h-12 z" fill="none" stroke="currentColor" stroke-width="1.5"/>
     <circle data-lamp-glow cx="28" cy="-22" r="34" fill="url(#lampGlow)"/>
-    <ellipse data-lamp cx="28" cy="-22" rx="4" ry="7" fill="#f6c36b"/>
+    <ellipse data-lamp cx="28" cy="-22" rx="4" ry="7" fill="#f0b464"/>
   </g>
   <rect x="0" y="200" width="320" height="40" fill="#2b1a0f"/>
   <path d="M0 200 H320" stroke="currentColor" stroke-width="2"/>
@@ -140,7 +140,7 @@ const pump: Mechanism = {
   <rect x="150" y="146" width="22" height="52" rx="3" fill="#b28f4e" stroke="#5a3f14" stroke-width="1.5"/>
   <g data-handle>
     <path d="M161 146 V64" stroke="#5a3f14" stroke-width="5" stroke-linecap="round"/>
-    <rect x="151" y="36" width="20" height="46" rx="10" fill="#efe6d3" stroke="#5a3f14" stroke-width="1.5"/>
+    <rect x="151" y="36" width="20" height="46" rx="10" fill="#f0eae1" stroke="#5a3f14" stroke-width="1.5"/>
     <path d="M155 48 h12 M155 58 h12 M155 68 h12" stroke="#b28f4e" stroke-width="1"/>
   </g>
   <g clip-path="url(#pintClip)">
@@ -203,12 +203,12 @@ const pump: Mechanism = {
 const hearth: Mechanism = {
   svg: `<svg viewBox="0 0 320 240" aria-hidden="true">
   <defs>
-    <radialGradient id="fireGlow"><stop offset="0" stop-color="#f2b45c" stop-opacity=".7"/><stop offset="1" stop-color="#f2b45c" stop-opacity="0"/></radialGradient>
+    <radialGradient id="fireGlow"><stop offset="0" stop-color="#f0b464" stop-opacity=".7"/><stop offset="1" stop-color="#f0b464" stop-opacity="0"/></radialGradient>
     <mask id="gild"><rect data-gild x="56" y="22" width="0" height="56" fill="#fff"/></mask>
   </defs>
   <rect x="54" y="22" width="212" height="54" fill="none" stroke="currentColor" stroke-width="2"/>
   <rect x="60" y="28" width="200" height="42" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
-  <text x="160" y="59" text-anchor="middle" font-family="Sancreek, 'IM Fell English', serif" font-size="21" letter-spacing="1.5" fill="#6d675c">PRINCE OF WALES</text>
+  <text x="160" y="59" text-anchor="middle" font-family="Sancreek, 'IM Fell English', serif" font-size="21" letter-spacing="1.5" fill="#6a6f70">PRINCE OF WALES</text>
   <text x="160" y="59" text-anchor="middle" font-family="Sancreek, 'IM Fell English', serif" font-size="21" letter-spacing="1.5" fill="#ecca70" mask="url(#gild)">PRINCE OF WALES</text>
   <rect x="34" y="98" width="252" height="12" fill="currentColor"/>
   <rect x="48" y="110" width="22" height="104" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -216,13 +216,13 @@ const hearth: Mechanism = {
   <rect x="70" y="110" width="180" height="104" fill="#0a0806"/>
   <circle data-fire-glow cx="160" cy="180" r="96" fill="url(#fireGlow)" opacity="0"/>
   <g data-flames>
-    <path data-flame d="M132 196 C122 180 126 168 132 156 C138 168 142 180 132 196 Z" fill="#e0812f"/>
-    <path data-flame d="M160 196 C146 176 150 156 160 134 C170 156 174 176 160 196 Z" fill="#f2b45c"/>
-    <path data-flame d="M186 196 C176 182 180 170 186 158 C192 170 196 182 186 196 Z" fill="#e0812f"/>
+    <path data-flame d="M132 196 C122 180 126 168 132 156 C138 168 142 180 132 196 Z" fill="#e07b1f"/>
+    <path data-flame d="M160 196 C146 176 150 156 160 134 C170 156 174 176 160 196 Z" fill="#f0b464"/>
+    <path data-flame d="M186 196 C176 182 180 170 186 158 C192 170 196 182 186 196 Z" fill="#e07b1f"/>
     <path data-flame d="M160 196 C154 186 156 176 160 168 C164 176 166 186 160 196 Z" fill="#fbe1a0"/>
   </g>
   <g fill="#7a2d12"><ellipse cx="134" cy="198" rx="16" ry="6"/><ellipse cx="162" cy="200" rx="18" ry="6"/><ellipse cx="188" cy="198" rx="14" ry="5"/></g>
-  <path d="M100 204 H220 M104 194 H216" stroke="#3a3a3a" stroke-width="3"/>
+  <path d="M100 204 H220 M104 194 H216" stroke="#343a3c" stroke-width="3"/>
   <path d="M34 214 H286" stroke="currentColor" stroke-width="2"/>
   <path d="M34 226 H286" stroke="currentColor" stroke-width="1" opacity=".4"/>
 </svg>`,
@@ -268,30 +268,30 @@ function eightSvg(): string {
     const y = -44 + i * 12;
     const side = i % 2 === 0 ? 1 : -1;
     seats.push(
-      `<path d="M0 ${y} L${(34 * side).toFixed(0)} ${y - 6}" stroke="#17140f" stroke-width="1.6"/><path d="M${(34 * side).toFixed(0)} ${y - 6} l${(7 * side).toFixed(0)} -2" stroke="#17140f" stroke-width="3" stroke-linecap="round"/><circle cy="${y}" r="2.2" fill="#c9a24a"/>`,
+      `<path d="M0 ${y} L${(34 * side).toFixed(0)} ${y - 6}" stroke="#0b1417" stroke-width="1.6"/><path d="M${(34 * side).toFixed(0)} ${y - 6} l${(7 * side).toFixed(0)} -2" stroke="#0b1417" stroke-width="3" stroke-linecap="round"/><circle cy="${y}" r="2.2" fill="#c8741a"/>`,
     );
   }
-  return `<g data-eight><path d="M0 -66 C4 -50 4 50 0 62 C-4 50 -4 -50 0 -66 Z" fill="#17140f"/>${seats.join('')}<circle cy="56" r="2.2" fill="#ecca70"/></g>`;
+  return `<g data-eight><path d="M0 -66 C4 -50 4 50 0 62 C-4 50 -4 -50 0 -66 Z" fill="#0b1417"/>${seats.join('')}<circle cy="56" r="2.2" fill="#eb9d4c"/></g>`;
 }
 
 const lock: Mechanism = {
   svg: `<svg viewBox="0 0 320 240" aria-hidden="true">
-  <rect x="0" y="0" width="92" height="240" fill="#b9c9a5"/>
-  <rect x="228" y="0" width="92" height="240" fill="#b9c9a5"/>
-  <g fill="#9db58a"><circle cx="36" cy="44" r="18"/><circle cx="52" cy="60" r="14"/><circle cx="24" cy="66" r="12"/><circle cx="286" cy="200" r="16"/><circle cx="300" cy="184" r="12"/></g>
-  <path d="M20 96 c6 -10 6 -22 0 -32 M32 100 c8 -12 8 -26 0 -40 M44 96 c6 -10 6 -22 0 -32" stroke="#6f8a5c" stroke-width="1.2" fill="none"/>
-  <rect x="92" y="0" width="136" height="240" fill="#8fb0ae"/>
-  <g data-ripples stroke="#e3ede6" stroke-width="1" fill="none" opacity=".75">
+  <rect x="0" y="0" width="92" height="240" fill="#b4b593"/>
+  <rect x="228" y="0" width="92" height="240" fill="#b4b593"/>
+  <g fill="#a2a67e"><circle cx="36" cy="44" r="18"/><circle cx="52" cy="60" r="14"/><circle cx="24" cy="66" r="12"/><circle cx="286" cy="200" r="16"/><circle cx="300" cy="184" r="12"/></g>
+  <path d="M20 96 c6 -10 6 -22 0 -32 M32 100 c8 -12 8 -26 0 -40 M44 96 c6 -10 6 -22 0 -32" stroke="#787d55" stroke-width="1.2" fill="none"/>
+  <rect x="92" y="0" width="136" height="240" fill="#7aa6b0"/>
+  <g data-ripples stroke="#e0eaec" stroke-width="1" fill="none" opacity=".75">
     <path d="M104 26 q10 -4 20 0 t20 0 t20 0 t20 0 t20 0"/><path d="M114 52 q10 -4 20 0 t20 0 t20 0 t20 0"/><path d="M104 214 q10 -4 20 0 t20 0 t20 0 t20 0 t20 0"/><path d="M118 232 q10 -4 20 0 t20 0 t20 0 t20 0"/>
   </g>
-  <rect x="92" y="70" width="18" height="122" fill="#8d907d"/>
-  <rect x="210" y="70" width="18" height="122" fill="#8d907d"/>
+  <rect x="92" y="70" width="18" height="122" fill="#8a9193"/>
+  <rect x="210" y="70" width="18" height="122" fill="#8a9193"/>
   <path d="M92 70 H110 M92 192 H110 M210 70 H228 M210 192 H228" stroke="#5a5d50" stroke-width="1"/>
   <g stroke="#4a3520" stroke-width="7" stroke-linecap="round"><path d="M110 176 v40"/><path d="M210 176 v40"/></g>
   ${eightSvg()}
-  <g data-gate-l><rect x="0" y="-4" width="54" height="8" fill="#4a3520" stroke="#17140f" stroke-width="1"/><path d="M0 0 H-42" stroke="#4a3520" stroke-width="5" stroke-linecap="round"/></g>
-  <g data-gate-r><rect x="0" y="-4" width="54" height="8" fill="#4a3520" stroke="#17140f" stroke-width="1"/><path d="M0 0 H-42" stroke="#4a3520" stroke-width="5" stroke-linecap="round"/></g>
-  <g fill="#8d907d"><rect x="86" y="92" width="12" height="4"/><rect x="222" y="92" width="12" height="4"/></g>
+  <g data-gate-l><rect x="0" y="-4" width="54" height="8" fill="#4a3520" stroke="#0b1417" stroke-width="1"/><path d="M0 0 H-42" stroke="#4a3520" stroke-width="5" stroke-linecap="round"/></g>
+  <g data-gate-r><rect x="0" y="-4" width="54" height="8" fill="#4a3520" stroke="#0b1417" stroke-width="1"/><path d="M0 0 H-42" stroke="#4a3520" stroke-width="5" stroke-linecap="round"/></g>
+  <g fill="#8a9193"><rect x="86" y="92" width="12" height="4"/><rect x="222" y="92" width="12" height="4"/></g>
 </svg>`,
   mount(root, gate) {
     const left = q<SVGGElement>(root, '[data-gate-l]');

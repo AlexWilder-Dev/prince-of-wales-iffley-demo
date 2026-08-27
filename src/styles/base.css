@@ -11,7 +11,7 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-padding-top: var(--nav-h);
-  background: var(--green);
+  background: var(--petrol);
   overflow-x: clip;
 }
 
@@ -21,7 +21,7 @@ body {
   font-size: var(--fs-body);
   line-height: 1.6;
   color: var(--on-paint);
-  background: var(--green);
+  background: var(--petrol);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
@@ -107,12 +107,12 @@ legend {
 }
 
 :focus-visible {
-  outline: 2px solid var(--gold-hi);
+  outline: 2px solid var(--rust-hi);
   outline-offset: 3px;
 }
 
 ::selection {
-  background: var(--gold);
+  background: var(--rust);
   color: var(--ink);
 }
 
@@ -157,12 +157,12 @@ em {
   font-size: 0.95rem;
   letter-spacing: 0.16em;
   text-transform: lowercase; /* SC face renders lowercase as small caps */
-  color: var(--gold);
+  color: var(--rust-hi);
   line-height: 1.3;
 }
 
 .paper .sc {
-  color: var(--gold-lo);
+  color: var(--rust-lo);
 }
 
 .lede {
@@ -180,13 +180,13 @@ em {
 }
 
 .paper {
-  background: var(--cream);
+  background: var(--chalk);
   color: var(--ink);
   color-scheme: light;
 }
 
 .paint {
-  background: var(--green);
+  background: var(--petrol);
   color: var(--on-paint);
   color-scheme: dark;
 }
@@ -220,10 +220,10 @@ em {
   color: var(--ink-2);
 }
 
-/* ---------- coach lines (double gold rules, as on a painted board) ---------- */
+/* ---------- coach lines (the double rule painted round a pub board) ---------- */
 .coach {
-  border: 1px solid var(--gold);
-  outline: 1px solid var(--gold);
+  border: 1px solid var(--rust);
+  outline: 1px solid var(--rust);
   outline-offset: 4px;
 }
 
@@ -253,17 +253,19 @@ em {
   text-transform: lowercase;
   line-height: 1;
   color: var(--on-paint);
-  border: 1px solid var(--gold);
+  border: 1px solid var(--rust);
   background: transparent;
   white-space: nowrap;
   will-change: transform;
 }
 
-.btn--gold {
-  color: var(--ink);
-  background: var(--gold);
-  border-color: var(--gold);
-  box-shadow: 0 0 0 1px var(--gold-lo) inset;
+/* A painted plaque, not a flat chip of orange: burnt sienna, a rust edge and
+   a hairline of chalk inside it. */
+.btn--rust {
+  color: var(--chalk);
+  background: var(--rust-deep);
+  border-color: var(--rust);
+  box-shadow: 0 0 0 1px rgba(240, 234, 225, 0.18) inset;
 }
 
 .btn--ink {
@@ -290,7 +292,7 @@ em {
   font-size: 1.02rem;
   letter-spacing: 0.12em;
   text-transform: lowercase;
-  color: var(--gold);
+  color: var(--rust-hi);
 }
 
 .link-arrow svg {
@@ -299,7 +301,7 @@ em {
 }
 
 .paper .link-arrow {
-  color: var(--gold-lo);
+  color: var(--rust-lo);
 }
 
 .link-inline {
@@ -307,7 +309,7 @@ em {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
-  text-decoration-color: var(--gold);
+  text-decoration-color: var(--rust);
 }
 
 /* ---------- skip link ---------- */
@@ -317,7 +319,7 @@ em {
   left: 0.5rem;
   z-index: 100;
   padding: 0.6rem 0.9rem;
-  background: var(--gold);
+  background: var(--rust);
   color: var(--ink);
   font-weight: 600;
   transform: translateY(-200%);
@@ -372,7 +374,7 @@ em {
 .band {
   position: relative;
   overflow: hidden;
-  background: var(--green-deep);
+  background: var(--petrol-deep);
 }
 
 .band img {
@@ -388,7 +390,7 @@ em {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(165deg, rgba(15, 42, 30, 0.55), rgba(201, 162, 74, 0.3));
+  background: linear-gradient(165deg, rgba(12, 32, 41, 0.6), rgba(224, 123, 31, 0.32));
   mix-blend-mode: soft-light;
 }
 

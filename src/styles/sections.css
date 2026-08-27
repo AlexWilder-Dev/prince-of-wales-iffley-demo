@@ -20,7 +20,7 @@
   width: 90vmax;
   height: 90vmax;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(242, 180, 92, 0.32) 0%, rgba(242, 180, 92, 0.1) 32%, rgba(242, 180, 92, 0) 62%);
+  background: radial-gradient(circle, rgba(224, 123, 31, 0.32) 0%, rgba(224, 123, 31, 0.1) 32%, rgba(224, 123, 31, 0) 62%);
   pointer-events: none;
   will-change: transform, opacity;
 }
@@ -69,6 +69,20 @@
 .sign__svg {
   width: 100%;
   height: auto;
+}
+
+/* Gold leaf belongs to the signwriting and nowhere else. */
+.sign__ground {
+  fill: var(--petrol);
+  stroke: var(--gold);
+}
+
+.sign__rule {
+  stroke: var(--gold);
+}
+
+.sign__gold {
+  fill: var(--gold-hi);
 }
 
 .hero__copy {
@@ -151,22 +165,22 @@
 }
 
 .era--bakery {
-  background: radial-gradient(70vmax 50vmax at 15% 100%, rgba(242, 180, 92, 0.3), rgba(242, 180, 92, 0) 60%), var(--flour);
+  background: radial-gradient(70vmax 50vmax at 15% 100%, rgba(224, 123, 31, 0.3), rgba(224, 123, 31, 0) 60%), var(--flour);
 }
 
 .era--victorian {
   opacity: 0;
-  background: radial-gradient(60vmax 60vmax at 88% 0%, rgba(201, 162, 74, 0.18), rgba(201, 162, 74, 0) 60%), var(--green-deep);
+  background: radial-gradient(60vmax 60vmax at 88% 0%, rgba(184, 89, 12, 0.18), rgba(184, 89, 12, 0) 60%), var(--petrol-deep);
 }
 
 .era--restored {
   opacity: 0;
-  background: radial-gradient(70vmax 50vmax at 18% 80%, rgba(242, 180, 92, 0.24), rgba(242, 180, 92, 0) 60%), var(--moss);
+  background: radial-gradient(70vmax 50vmax at 18% 80%, rgba(224, 123, 31, 0.24), rgba(224, 123, 31, 0) 60%), var(--teal-deep);
 }
 
 .era--today {
   opacity: 0;
-  background: linear-gradient(to bottom, #eef1e6 0%, var(--river) 60%, #d6ddd0 100%);
+  background: linear-gradient(to bottom, #eef1ee 0%, var(--river) 60%, #cfdad9 100%);
 }
 
 .story__light {
@@ -177,7 +191,7 @@
   height: 90vmax;
   margin: -45vmax 0 0 -45vmax;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(242, 180, 92, 0.45) 0%, rgba(242, 180, 92, 0.14) 30%, rgba(242, 180, 92, 0) 60%);
+  background: radial-gradient(circle, rgba(224, 123, 31, 0.45) 0%, rgba(224, 123, 31, 0.14) 30%, rgba(224, 123, 31, 0) 60%);
   will-change: transform, opacity;
   opacity: 0.8;
 }
@@ -189,14 +203,14 @@
   bottom: 0;
   left: max(10px, calc((100% - var(--container)) / 2 + var(--gutter) - 2.25rem));
   width: 1px;
-  background: rgba(201, 162, 74, 0.25);
+  background: rgba(184, 89, 12, 0.25);
   pointer-events: none;
 }
 
 .thread__fill {
   position: absolute;
   inset: 0;
-  background: var(--gold);
+  background: var(--rust-bright);
   transform-origin: top center;
   transform: scaleY(0);
   will-change: transform;
@@ -246,7 +260,7 @@
 
 .chapter--victorian .chapter__mech,
 .chapter--restored .chapter__mech {
-  color: var(--gold);
+  color: var(--rust-hi);
 }
 
 .chapter__mech svg {
@@ -263,7 +277,7 @@
 
 .chapter--victorian .chapter__label,
 .chapter--restored .chapter__label {
-  color: var(--gold);
+  color: var(--rust-hi);
 }
 
 .thread__dot {
@@ -271,8 +285,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 0 3px rgba(201, 162, 74, 0.22);
+  background: var(--rust-bright);
+  box-shadow: 0 0 0 3px rgba(224, 123, 31, 0.22);
   transform: scale(0.5);
   opacity: 0.45;
   will-change: transform, opacity;
@@ -346,7 +360,7 @@
   display: flex;
   gap: 1.75rem;
   margin-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(23, 20, 15, 0.25);
+  border-bottom: 1px solid rgba(11, 20, 23, 0.25);
 }
 
 .card__tab {
@@ -370,7 +384,7 @@
   bottom: -1px;
   height: 2px;
   width: 0;
-  background: var(--gold-lo);
+  background: var(--teal);
   will-change: transform, width;
 }
 
@@ -388,7 +402,7 @@
   justify-content: space-between;
   gap: 1rem;
   padding-bottom: 0.4rem;
-  border-bottom: 1px solid rgba(23, 20, 15, 0.2);
+  border-bottom: 1px solid rgba(11, 20, 23, 0.2);
 }
 
 .course__title {
@@ -411,7 +425,7 @@
   display: grid;
   gap: 0.2rem;
   padding: 0.85rem 0;
-  border-bottom: 1px dotted rgba(23, 20, 15, 0.25);
+  border-bottom: 1px dotted rgba(11, 20, 23, 0.25);
   will-change: transform;
 }
 
@@ -430,7 +444,7 @@
 .dish__dots {
   flex: 1;
   min-width: 1rem;
-  border-bottom: 1px dotted rgba(23, 20, 15, 0.5);
+  border-bottom: 1px dotted rgba(11, 20, 23, 0.5);
   transform: translateY(-0.3em);
 }
 
@@ -452,7 +466,7 @@
   font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: lowercase;
-  color: var(--gold-lo);
+  color: var(--rust-lo);
 }
 
 .menu-panel__foot {
@@ -491,7 +505,7 @@
 .trimmings {
   margin-top: 2rem;
   padding: 1.1rem 1.25rem;
-  border: 1px solid rgba(23, 20, 15, 0.35);
+  border: 1px solid rgba(11, 20, 23, 0.35);
 }
 
 .trimmings h4 {
@@ -510,7 +524,7 @@
   align-items: center;
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(23, 20, 15, 0.25);
+  border-top: 1px solid rgba(11, 20, 23, 0.25);
 }
 
 .bar-note__img {
@@ -551,7 +565,7 @@
    WHAT'S ON — the playbill
    ================================================================== */
 .playbill {
-  background: var(--green-deep);
+  background: var(--petrol-deep);
 }
 
 .playbill__sheet {
@@ -559,7 +573,7 @@
   max-width: 34rem;
   margin-inline: auto;
   padding: clamp(1.5rem, 6vw, 3rem) clamp(1.25rem, 5vw, 2.5rem);
-  background: var(--cream);
+  background: var(--chalk);
   color: var(--ink);
   color-scheme: light;
   text-align: center;
@@ -615,7 +629,7 @@
   bottom: -0.62rem;
   transform: translateX(-50%);
   padding: 0 0.5rem;
-  background: var(--cream);
+  background: var(--chalk);
   font-size: 0.9rem;
   color: var(--ink-2);
   line-height: 1;
@@ -630,7 +644,7 @@
   font-size: 0.95rem;
   letter-spacing: 0.16em;
   text-transform: lowercase;
-  color: var(--gold-lo);
+  color: var(--rust-lo);
 }
 
 .playbill__name {
@@ -708,7 +722,7 @@
   aspect-ratio: 6 / 5;
   overflow: hidden;
   border: 1px solid var(--ink);
-  background: #e3ddc8;
+  background: #e7e2d8;
   will-change: transform, opacity;
 }
 
@@ -730,7 +744,7 @@
   font-style: italic;
   font-size: 11px;
   letter-spacing: 0.02em;
-  fill: #3f6a72;
+  fill: #2f6473;
 }
 
 .map__label--pub {
@@ -741,7 +755,7 @@
 }
 
 .map__route {
-  stroke: var(--gold-lo);
+  stroke: var(--rust-lo);
   stroke-width: 3;
   fill: none;
   stroke-linecap: round;
@@ -751,7 +765,7 @@
 .routes {
   display: grid;
   margin-top: 1.25rem;
-  border-top: 1px solid rgba(23, 20, 15, 0.25);
+  border-top: 1px solid rgba(11, 20, 23, 0.25);
 }
 
 .routes > li {
@@ -765,7 +779,7 @@
   gap: 0.25rem 0.75rem;
   align-items: baseline;
   padding: 0.9rem 0;
-  border-bottom: 1px solid rgba(23, 20, 15, 0.25);
+  border-bottom: 1px solid rgba(11, 20, 23, 0.25);
   text-align: left;
   color: var(--ink);
   will-change: transform;
@@ -788,7 +802,7 @@
   font-family: var(--font-head);
   font-style: italic;
   font-size: 1.2rem;
-  color: var(--gold-lo);
+  color: var(--rust-lo);
 }
 
 .route__name {
@@ -810,7 +824,7 @@
 
 .route[aria-pressed='true'] .route__name {
   text-decoration: underline;
-  text-decoration-color: var(--gold-lo);
+  text-decoration-color: var(--rust-lo);
   text-underline-offset: 0.25em;
   text-decoration-thickness: 1px;
 }
@@ -851,19 +865,19 @@
   grid-template-columns: 4rem 1fr;
   gap: 1rem;
   padding: 1.1rem 0;
-  border-top: 1px solid rgba(201, 162, 74, 0.35);
+  border-top: 1px solid rgba(184, 89, 12, 0.35);
   will-change: transform, opacity;
 }
 
 .space:last-child {
-  border-bottom: 1px solid rgba(201, 162, 74, 0.35);
+  border-bottom: 1px solid rgba(184, 89, 12, 0.35);
 }
 
 .space__cap {
   font-family: var(--font-sign);
   font-size: 2.4rem;
   line-height: 1;
-  color: var(--gold-hi);
+  color: var(--rust-hi);
 }
 
 .space h4 {
@@ -886,8 +900,8 @@
   width: 100%;
   aspect-ratio: 4 / 5;
   max-width: 26rem;
-  border: 1px solid var(--gold);
-  outline: 1px solid var(--gold);
+  border: 1px solid var(--rust);
+  outline: 1px solid var(--rust);
   outline-offset: 5px;
   will-change: transform, opacity;
 }
@@ -936,7 +950,7 @@
   line-height: 2.5rem;
   font-family: var(--font-head);
   font-size: 1.1rem;
-  color: var(--gold-lo);
+  color: var(--rust-lo);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.25em;
@@ -969,7 +983,7 @@
 }
 
 .hours-board .sc {
-  color: var(--gold);
+  color: var(--rust-hi);
 }
 
 .hours {
@@ -1002,7 +1016,7 @@
 
 .hours dt.is-today::after {
   content: ' · today';
-  color: var(--gold-hi);
+  color: var(--rust-hi);
 }
 
 .hours dd {
@@ -1063,20 +1077,37 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(to top, var(--green) 0%, rgba(15, 42, 30, 0) 45%);
+  background: linear-gradient(to top, var(--petrol) 0%, rgba(12, 32, 41, 0) 45%);
 }
 
 .closing__cue {
   padding-top: 0.9rem;
   padding-bottom: 0.4rem;
-  color: var(--gold);
+  color: var(--rust-hi);
 }
 
 /* ==================================================================
    FOOTER
    ================================================================== */
 .foot {
+  position: relative;
   padding: clamp(2.5rem, 7vw, 4.5rem) 0 calc(2rem + var(--safe-bottom));
+}
+
+/* the same tiled threshold, on the way out */
+.foot::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background-image:
+    linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%),
+    linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+  opacity: 0.2;
 }
 
 .foot__grid {
@@ -1124,7 +1155,7 @@
 }
 
 .foot__social span {
-  color: var(--gold);
+  color: var(--rust-hi);
   font-family: var(--font-body);
   font-size: 0.95rem;
   margin-left: 0.4rem;
@@ -1135,7 +1166,7 @@
   gap: 0.35rem;
   margin-top: 3rem;
   padding-top: 1.25rem;
-  border-top: 1px solid rgba(201, 162, 74, 0.35);
+  border-top: 1px solid rgba(184, 89, 12, 0.35);
   font-size: 0.82rem;
   font-style: italic;
   color: var(--on-paint-2);
