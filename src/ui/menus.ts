@@ -43,8 +43,8 @@ function seasonalPanel(): string {
 
 function roastPanel(): string {
   return `<div class="roast-hero" data-reveal="weight">
-      <div class="band">
-        <img src="${BASE}images/roast-800.webp" srcset="${BASE}images/roast-480.webp 480w, ${BASE}images/roast-800.webp 800w, ${BASE}images/roast-1200.webp 1200w" sizes="(min-width: 760px) 40vw, 92vw" alt="Carving a roast at the table" loading="lazy" decoding="async" />
+      <div class="band band--true">
+        <img src="${BASE}images/roast-800.webp" srcset="${BASE}images/roast-480.webp 480w, ${BASE}images/roast-800.webp 800w, ${BASE}images/roast-1200.webp 1200w" sizes="(min-width: 760px) 40vw, 92vw" alt="Gravy poured over rare roast beef with a Yorkshire pudding and roast potatoes" loading="lazy" decoding="async" />
       </div>
       <div class="roast-hero__text">
         <p class="sc">${esc(roast.eyebrow)}</p>

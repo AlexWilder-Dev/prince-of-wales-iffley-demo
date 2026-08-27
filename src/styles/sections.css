@@ -470,7 +470,7 @@
 }
 
 .roast-hero .band {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
 }
 
 .roast-hero__text {
@@ -505,7 +505,7 @@
 
 .bar-note {
   display: grid;
-  grid-template-columns: 96px 1fr;
+  grid-template-columns: 132px 1fr;
   gap: 1.25rem;
   align-items: center;
   margin-top: 3rem;
@@ -514,7 +514,7 @@
 }
 
 .bar-note__img {
-  aspect-ratio: 1;
+  aspect-ratio: 5 / 4;
 }
 
 .bar-note h4 {
@@ -542,7 +542,7 @@
     align-content: center;
   }
   .bar-note {
-    grid-template-columns: 140px 1fr;
+    grid-template-columns: 180px 1fr;
     gap: 2rem;
   }
 }
@@ -676,8 +676,13 @@
   padding-top: 0;
 }
 
+/* Hold the photograph's own shape (16:7 → 100/2.286 ≈ 43.75vw) so the frontage
+   survives on a phone, and cap the height so it doesn't become a billboard on a
+   wide screen. Height rather than aspect-ratio: aspect-ratio plus max-height
+   would shrink the width and break the full-bleed. */
 .band--wide {
-  height: clamp(15rem, 46vh, 28rem);
+  width: 100%;
+  height: min(43.75vw, 26rem);
   margin-bottom: clamp(2.5rem, 8vw, 5rem);
 }
 
@@ -1030,11 +1035,48 @@
 }
 
 /* ==================================================================
+   CLOSING BAND — the lanterns on Church Way
+   ================================================================== */
+.closing {
+  position: relative;
+  padding-top: clamp(3rem, 9vw, 6rem);
+}
+
+/* 20:9 → 100/2.222 = 45vw. Same reasoning as .band--wide. */
+.band--closing {
+  width: 100%;
+  height: min(45vw, 22rem);
+}
+
+.band--closing img {
+  position: absolute;
+  left: 0;
+  top: -10%;
+  width: 100%;
+  height: 120%;
+}
+
+/* Seat the night shot into the dark page below it. */
+.band--closing::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to top, var(--green) 0%, rgba(15, 42, 30, 0) 45%);
+}
+
+.closing__cue {
+  padding-top: 0.9rem;
+  padding-bottom: 0.4rem;
+  color: var(--gold);
+}
+
+/* ==================================================================
    FOOTER
    ================================================================== */
 .foot {
-  padding: var(--section-pad) 0 calc(2rem + var(--safe-bottom));
-  border-top: 1px solid var(--gold);
+  padding: clamp(2.5rem, 7vw, 4.5rem) 0 calc(2rem + var(--safe-bottom));
 }
 
 .foot__grid {

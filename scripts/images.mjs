@@ -1,65 +1,64 @@
 /**
- * Image pipeline — pulls free Unsplash photos once, then writes responsive
- * WebP variants into public/images. Run with `npm run images`.
+ * Image pipeline — builds responsive WebP variants in public/images from the
+ * master photographs committed in assets/source. Run with `npm run images`.
  *
- * Every photo here is licensed under the Unsplash License (free to use).
+ * The photographs are the pub's own, taken from princeofwalesiffley.co.uk and
+ * committed here (not hotlinked) so this concept site serves them from its own
+ * origin. They are used to illustrate a speculative design proposal.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 
+const SRC = path.resolve('assets/source');
 const OUT = path.resolve('public/images');
-const CACHE = path.resolve('scripts/.cache');
 
-/** name → { id, aspect (w/h) or null for source aspect, position for cover crops } */
-const SOURCES = {
-  hero: { id: '1514933651103-005eec06c04b', aspect: null, widths: [640, 1200, 1800] },
-  bakery: { id: '1509440159596-0249088772ff', aspect: 4 / 5, position: 'centre' },
-  victorian: { id: '1518176258769-f227c798150e', aspect: 4 / 5, position: 'attention' },
-  restored: { id: '1544148103-0773bf10d330', aspect: 4 / 5, position: 'attention' },
-  lock: { id: '1444492417251-9c84a5fa18e0', aspect: 4 / 5, position: 'centre' },
-  seasonal: { id: '1432139555190-58524dae6a55', aspect: 4 / 3, position: 'attention' },
-  roast: { id: '1574672280600-4accfa5b6f98', aspect: 4 / 3, position: 'attention' },
-  ale: { id: '1535958636474-b021ee887b13', aspect: 1, position: 'attention' },
-  garden: { id: '1585320806297-9794b3e4eeae', aspect: 4 / 5, position: 'centre' },
-  meadow: { id: '1590586767908-20d6d1b6db58', aspect: null, widths: [640, 1200, 1800] },
-  hire: { id: '1519225421980-715cb0215aed', aspect: 4 / 5, position: 'attention' },
-  sharing: { id: '1466978913421-dad2ebd01d17', aspect: 1, position: 'centre' },
+/**
+ * name → source file, target aspect (w/h; null keeps the source aspect), and
+ * the widths to emit. `focusY` (0–1) picks where the crop sits vertically in
+ * the source — 0.5 is centred; higher keeps more of the bottom.
+ */
+const IMAGES = {
+  // The illuminated name board on Church Way — the closing band.
+  frontage: { file: 'frontage.jpg', aspect: 20 / 9, widths: [640, 1069] },
+  // The pub under the chestnut, opening the garden & walks section. Cropped
+  // low so the frontage and the entrance carry it, not the sky.
+  pub: { file: 'pub.jpg', aspect: 16 / 7, focusY: 0.66, widths: [640, 1200, 1800] },
+  // Wadworth handpumps, beside the bar note on the menu card. 5:4 keeps all
+  // four pump clips in frame.
+  pumps: { file: 'pumps.jpg', aspect: 5 / 4, widths: [320, 640] },
+  // Gravy over the beef, at the head of the Sunday roast menu.
+  roast: { file: 'roast.jpg', aspect: 4 / 3, widths: [480, 800, 1200] },
+  // The upstairs room, in private hire.
+  room: { file: 'room.jpg', aspect: 4 / 5, widths: [480, 800, 1200] },
 };
-
-const DEFAULT_WIDTHS = [480, 800, 1200];
-
-async function fetchSource(name, id) {
-  await fs.mkdir(CACHE, { recursive: true });
-  const file = path.join(CACHE, `${name}.jpg`);
-  try {
-    await fs.access(file);
-    return file;
-  } catch {
-    /* not cached */
-  }
-  const url = `https://images.unsplash.com/photo-${id}?w=2200&q=85&fm=jpg`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`${name}: ${res.status} for ${url}`);
-  await fs.writeFile(file, Buffer.from(await res.arrayBuffer()));
-  return file;
-}
 
 async function build() {
   await fs.mkdir(OUT, { recursive: true });
-  for (const [name, spec] of Object.entries(SOURCES)) {
-    const src = await fetchSource(name, spec.id);
+  for (const [name, spec] of Object.entries(IMAGES)) {
+    const src = path.join(SRC, spec.file);
     const meta = await sharp(src).metadata();
-    const widths = spec.widths ?? DEFAULT_WIDTHS;
-    for (const w of widths) {
-      const width = Math.min(w, meta.width ?? w);
+    const srcW = meta.width ?? 0;
+    const srcH = meta.height ?? 0;
+
+    // With focusY, take the crop out of the source ourselves so we control
+    // where it sits vertically; otherwise let sharp cover-crop from the centre.
+    let extract;
+    if (spec.focusY !== undefined && spec.aspect) {
+      const cropH = Math.min(srcH, Math.round(srcW / spec.aspect));
+      const top = Math.max(0, Math.min(srcH - cropH, Math.round(spec.focusY * srcH - cropH / 2)));
+      extract = { left: 0, top, width: srcW, height: cropH };
+    }
+
+    for (const w of spec.widths) {
+      const width = Math.min(w, srcW || w);
       const height = spec.aspect ? Math.round(width / spec.aspect) : undefined;
       const out = path.join(OUT, `${name}-${w}.webp`);
       let img = sharp(src);
-      img = height
-        ? img.resize(width, height, { fit: 'cover', position: spec.position ?? 'centre' })
-        : img.resize({ width });
-      await img.webp({ quality: 70, effort: 5 }).toFile(out);
+      if (extract) img = img.extract(extract).resize({ width });
+      else if (height) img = img.resize(width, height, { fit: 'cover', position: 'centre' });
+      else img = img.resize({ width });
+      await img.webp({ quality: 72, effort: 5 }).toFile(out);
       const { size } = await fs.stat(out);
       console.log(`${name}-${w}.webp  ${(size / 1024).toFixed(0)} KB`);
     }

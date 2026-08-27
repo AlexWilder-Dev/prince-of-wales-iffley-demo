@@ -26,14 +26,17 @@ Built from the pub's own vernacular rather than a restaurant template:
 - **Playbill, card, slip.** What's On is set as a Victorian playbill; menus as a printed card that
   opens with bread; the booking sheet is a reservation slip that gets a spring-slammed
   *Received* stamp.
-- Three photographs, all treated as green-and-gold duotone bands.
+- **Five photographs, no more.** The pub's own: the frontage under its chestnut, the four Wadworth
+  handpumps, gravy going over the beef, the upstairs room, and the lit sign on Church Way at night.
+  The building gets a light grade towards the house colours; food and drink are shown as they are.
 
 ## Stack
 
 - Vite + vanilla TypeScript, zero runtime dependencies (≈17 KB JS gzipped, ≈7 KB CSS).
 - A small spring-physics engine (`src/motion/spring.ts`) drives *every* movement: entrances,
   parallax, hover/press, the scroll follower, the era crossfade, the mechanisms, the sign.
-- Free Unsplash photography committed locally as responsive WebP (`npm run images` regenerates).
+- Photography is the pub's own, taken from princeofwalesiffley.co.uk and committed here (not
+  hotlinked) in `assets/source`; `npm run images` rebuilds the responsive WebP variants.
 - `prefers-reduced-motion` collapses to a static, fully visible page with every mechanism in its
   finished state.
 
@@ -56,7 +59,7 @@ feel (`gentle`, `heavy`, `snappy`, `hover`, `follow`, `drift`, `sheet`).
 npm run dev       # local dev server (served under /prince-of-wales-iffley-demo/)
 npm run build     # type-check + production build to dist/
 npm run preview   # preview the build
-npm run images    # rebuild public/images from the Unsplash sources
+npm run images    # rebuild public/images from the masters in assets/source
 ```
 
 Deploys to GitHub Pages on every push to `main` via `.github/workflows/deploy.yml`.
